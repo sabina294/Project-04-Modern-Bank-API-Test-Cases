@@ -1,0 +1,211 @@
+,Role,Customer ,,,,,,,
+,Project Name:,Modern Bank API ,,,,,,,
+,Feature Name:,Customers Registration,,,,,,,
+,Reference Document:,,,,,,,,
+,Created By:,Sabina Yeasmin,,,,,,,
+,Updated By:,,,,,,,,
+,Date of Creation:,26 May 2025,,,,,,,
+,Number of  cases:,14,,,,,,,
+,Passed,11,,,,,,,
+,Failed,3,,,,,,,
+,,,,,,,,,
+#, CASE ID,DESCRIPTION,PRE-CONDITIONS, REQUEST BODY,STEPS,EXPECTED RESULT,RESPONSE BODY,ACTUAL RESULT,STATUS
+1,CUST_REG_001,Verify successful customer registration with valid credentials.,"1. The API server is running.
+","{
+  ""name"": ""John Doe"",
+  ""email"": ""john.doe@example.com"",
+  ""password"": ""123456"",
+  ""initial_deposit"": 11.0
+}",1. Send a POST request to /customers/register/ with the above request body,"HTTP Status Code: 201 Created
+","{
+    ""account_id"": 31,
+    ""message"": ""Customer registered successfully""
+}","{
+    ""account_id"": 31,
+    ""message"": ""Customer registered successfully""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+2,CUST_REG_002,Verify  customer registration with email already exist.,"1. The API server is running.
+","{
+  ""name"": ""John Doe"",
+  ""email"": ""john.doe@example.com"",
+  ""password"": ""123456"",
+  ""initial_deposit"": 11.0
+}",1. Send a POST request to /customers/register/ with the above request body,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""Email already registered""
+}","{
+    ""error"": ""Email already registered""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+3,CUST_REG_003,"Verify  customer registration with name,email,password and initial_deposit are blank.","1. The API server is running.
+","{
+  ""name"": "" "",
+  ""email"": "" "",
+  ""password"": "" "",
+  ""initial_deposit"": "" ""
+}",1. Send a POST request to /customers/register/ with the above request body,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""Name, email, and password are required""
+}","{
+    ""error"": ""Name, email, and password are required""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+4,CUST_REG_004,"Verify  customer registration with name,email,password and initial_deposit are NULL.","1. The API server is running.
+","{
+  ""name"": ""John Doe"",
+  ""email"": ""test@example.com"",
+  ""password"": ""123456"",
+  ""initial_deposit"": null
+}",1. Send a POST request to /customers/register/ with the above request body,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""Name, email, and password are required""
+}","{
+    ""error"": ""Name, email, and password are required""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+5,CUST_REG_005,"customer registration with name,email,password and initial_deposit are Boolean.","1. The API server is running.
+","{
+  ""name"": ""true"",
+  ""email"": ""true"",
+  ""password"": ""true"",
+  ""initial_deposit"": true
+}",1. Send a POST request to /customers/register/ with the above request body,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""name,email,password and initial_deposit are required""
+}
+","{
+        ""account_id"": 41,
+          ""message"": ""Customer registered successfully""
+}
+",Failed
+,,,,,,,,,
+,,,,,,,,,
+6,CUST_REG_006,"Verify  customer registration with name,email,password valid and initial_deposit is 9.0","1. The API server is running.
+","{
+  ""name"": ""John Doe"",
+  ""email"": ""test1@example.com"",
+  ""password"": ""123456"",
+  ""initial_deposit"": 9.0
+}",1. Send a POST request to /customers/register/ with the above request body,"HTTP Status Code: 201 Created
+","{
+    ""account_id"": 35,
+    ""message"": ""Customer registered successfully""
+}","{
+    ""account_id"": 35,
+    ""message"": ""Customer registered successfully""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+7,CUST_REG_007,"customer registration with name,email,password valid and initial_deposit is 10.0","1. The API server is running.
+","{
+  ""name"": ""John Doe"",
+  ""email"": ""test2@example.com"",
+  ""password"": ""123456"",
+  ""initial_deposit"": 10.0
+}",1. Send a POST request to /customers/register/ with the above request body,"HTTP Status Code: 201 Created
+","{
+    ""account_id"": 36,
+    ""message"": ""Customer registered successfully""
+}","{
+    ""account_id"": 36,
+    ""message"": ""Customer registered successfully""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+8,CUST_REG_008,"Verify  customer registration with name,email,password valid and initial_deposit is 11.0","1. The API server is running.
+","{
+  ""name"": ""John Doe"",
+  ""email"": ""test3@example.com"",
+  ""password"": ""123456"",
+  ""initial_deposit"": 11.0
+}",1. Send a POST request to /customers/register/ with the above request body,"HTTP Status Code: 201 Created
+","{
+    ""account_id"": 37,
+    ""message"": ""Customer registered successfully""
+}","{
+    ""account_id"": 37,
+    ""message"": ""Customer registered successfully""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+9,CUST_REG_009,"Verify  customer registration with email, password and initial_deposit valid but without name","1. The API server is running.
+","{
+  ""email"": ""test3@example.com"",
+  ""password"": ""123456"",
+  ""initial_deposit"": 11.0
+}",1. Send a POST request to /customers/register/ with the above request body,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""Name, email, and password are required""
+}","{
+    ""error"": ""Name, email, and password are required""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+10,CUST_REG_010,"Verify  customer registration with name, password and initial_deposit valid but without email","1. The API server is running.
+","{
+  ""name"": ""John Doe"",
+  ""password"": ""123456"",
+  ""initial_deposit"": 11.0
+}",1. Send a POST request to /customers/register/ with the above request body,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""Name, email, and password are required""
+}","{
+    ""error"": ""Name, email, and password are required""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+11,CUST_REG_011,"Verify  customer registration with name, email and initial_deposit valid but without password","1. The API server is running.
+","{
+  ""name"": ""John Doe"",
+  ""email"": ""test3@example.com"",
+  ""initial_deposit"": 11.0
+}",1. Send a POST request to /customers/register/ with the above request body,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""Name, email, and password are required""
+}","{
+    ""error"": ""Name, email, and password are required""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+12,CUST_REG_012,"Verify  customer registration with name, password, email valid but without initial_deposit","1. The API server is running.
+","{
+  ""name"": ""John Doe"",
+  ""email"": ""test2@example.com"",
+  ""password"": ""123456"",
+}",1. Send a POST request to /customers/register/ with the above request body,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""initial_deposit are required""
+}
+","{
+    ""account_id"": 40,
+    ""message"": ""Customer registered successfully""
+}
+",Failed
+,,,,,,,,,
+,,,,,,,,,
+13,CUST_REG_013,"Verify  customer registration with name, email and initial_deposit and password is 5 character length","1. The API server is running.
+","{
+  ""name"": ""John Doe"",
+  ""email"": ""test4@example.com"",
+  ""password"": ""12345"",
+  ""initial_deposit"": 11.0
+}",1. Send a POST request to /customers/register/ with the above request body,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""password are required""
+}
+","{
+    ""account_id"": 39,
+    ""message"": ""Customer registered successfully""
+}",Failed
+,,,,,,,,,
+,,,,,,,,,
+14,CUST_REG_014,"Verify  customer registration with name, email and initial_deposit and password is 7 character length","1. The API server is running.
+","{
+  ""name"": ""John Doe"",
+  ""email"": ""test5@example.com"",
+  ""password"": ""1234567"",
+  ""initial_deposit"": 11.0
+}",1. Send a POST request to /customers/register/ with the above request body,"HTTP Status Code: 201 Created
+","{
+    ""account_id"": 41,
+    ""message"": ""Customer registered successfully""
+}","{
+    ""account_id"": 41,
+    ""message"": ""Customer registered successfully""
+}",Passed
