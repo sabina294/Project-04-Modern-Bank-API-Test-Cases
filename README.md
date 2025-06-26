@@ -24,14 +24,14 @@ This repository contains all the manual testing artifacts for the **[Project Nam
   - Expected Result
   - Status (Pass/Fail)
   
-<img src="https://github.com/sabina294/Project-01-Login-Test-Case/blob/main/write-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/01-write-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
 ### 2. **Test Execution Customers Registration**
 - Executed all test cases manually across supported browsers/devices.
 - Marked each test with actual results and status.
 - Attached screenshots for failed cases (if applicable).
 
-<img src="https://github.com/sabina294/Project-01-Login-Test-Case/blob/main/execute-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/01-execute-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
 ### 3. **Test Case Design Customers Login**
 - Designed test cases based on functional requirements.
@@ -44,14 +44,14 @@ This repository contains all the manual testing artifacts for the **[Project Nam
   - Expected Result
   - Status (Pass/Fail)
   
-<img src="https://github.com/sabina294/Project-01-Login-Test-Case/blob/main/write-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/02-write-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
 ### 4. **Test Execution Customers Login	**
 - Executed all test cases manually across supported browsers/devices.
 - Marked each test with actual results and status.
 - Attached screenshots for failed cases (if applicable).
 
-<img src="https://github.com/sabina294/Project-01-Login-Test-Case/blob/main/execute-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/02-execute-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
 ### 5. **Test Case Design Customers Me Balance**
 - Designed test cases based on functional requirements.
