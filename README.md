@@ -64,7 +64,7 @@ This repository contains all the manual testing artifacts for the **[Project Nam
   - Expected Result
   - Status (Pass/Fail)
   
-<img src="https://github.com/sabina294/Project-01-Login-Test-Case/blob/main/write-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/03-write-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
 ### 6. **Test Execution Customers Me Balance**
 - Executed all test cases manually across supported browsers/devices.
@@ -84,14 +84,14 @@ This repository contains all the manual testing artifacts for the **[Project Nam
   - Expected Result
   - Status (Pass/Fail)
   
-<img src="https://github.com/sabina294/Project-01-Login-Test-Case/blob/main/write-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/04-write-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
-### 8. **Test Execution Customers Me Deposit	**
+### 8. **Test Execution Customers Me Deposit**
 - Executed all test cases manually across supported browsers/devices.
 - Marked each test with actual results and status.
 - Attached screenshots for failed cases (if applicable).
 
-<img src="https://github.com/sabina294/Project-01-Login-Test-Case/blob/main/execute-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/04-execute-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
 ### 9. **Test Case Design Customers Me Withdraw**
 - Designed test cases based on functional requirements.
