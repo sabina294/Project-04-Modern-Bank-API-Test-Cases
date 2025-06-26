@@ -1,0 +1,45 @@
+"Project Name: Customers Registration
+Report Created By:  Sabina Yeasmin
+Report Creation Date: 26 May 2025
+Number of Bugs: 03",,,,,,
+Bug ID,Title,Description,Steps to reproduce,Request Body,Expected result,Actual result
+Bug-01,Incorrect Data Types in Customer Registration,"In the customer registration form, the fields name, email, password, and initial_deposit are incorrectly configured to accept Boolean values (true or false) instead of their appropriate data types.","1. Send a POST request to /customers/register/ with the above request body
+","{
+  ""name"": ""true"",
+  ""email"": ""true"",
+  ""password"": ""true"",
+  ""initial_deposit"": true
+}","{
+    ""error"": ""name,email,password and initial_deposit are required""
+}
+","{
+    ""message"": ""Customer registered successfully""
+}
+"
+,,,,,,
+Bug-02,Customer Registration Succeeds Without Required initial_deposit,"During customer registration, the form allows submission with valid name, email, and password, but without providing initial_deposit. The system still processes the registration successfully, even though initial_deposit is expected to be a mandatory field.","1. Send a POST request to /customers/register/ with the above request body
+","{
+  ""name"": ""customer"",
+  ""email"": ""test5@example.com"",
+  ""password"": ""123456"",
+}","{
+    ""error"": ""initial_deposit are required""
+}
+","{
+    ""message"": ""Customer registered successfully""
+}
+"
+,,,,,,
+Bug-03,Customer Registration Accepts Password with Insufficient Length,The system allows customer registration even when the provided password is only 5 characters long.,"1. Send a POST request to /customers/register/ with the above request body
+","{
+  ""name"": ""John Doe"",
+  ""email"": ""test4@example.com"",
+  ""password"": ""12345"",
+  ""initial_deposit"": 11.0
+}","{
+    ""error"": ""password are required""
+}
+","{
+    ""message"": ""Customer registered successfully""
+}
+"
