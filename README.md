@@ -71,7 +71,7 @@ This repository contains all the manual testing artifacts for the **[Project Nam
 - Marked each test with actual results and status.
 - Attached screenshots for failed cases (if applicable).
 
-<img src="https://github.com/sabina294/Project-01-Login-Test-Case/blob/main/execute-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/03-execute-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
 ### 7. **Test Case Design Customers Me Deposit	**
 - Designed test cases based on functional requirements.
