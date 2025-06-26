@@ -1,7 +1,7 @@
 # 🧪 Manual Testing Project
 
 ## 📌 Project Overview
-This repository contains all the manual testing artifacts for the **Modern Bank API** web application. The project includes well-defined **test cases**, detailed **bug reports**, and a comprehensive **test execution report**, demonstrating a structured and methodical approach to software quality assurance.
+This repository contains all the manual testing artifacts for the **Modern Bank API**  application. The project includes well-defined **test cases**, detailed **bug reports**, and a comprehensive **test execution report**, demonstrating a structured and methodical approach to software quality assurance.
 
 ---
 
