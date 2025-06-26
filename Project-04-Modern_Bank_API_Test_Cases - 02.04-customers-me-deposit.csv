@@ -1,0 +1,150 @@
+,Role,Customer ,,,,,,,
+,Project Name:,Modern Bank API ,,,,,,,
+,Feature Name:,Customers  Me Deposit,,,,,,,
+,Reference Document:,,,,,,,,
+,Created By:,Sabina Yeasmin,,,,,,,
+,Updated By:,,,,,,,,
+,Date of Creation:,26 May 2025,,,,,,,
+,Number of  cases:,11,,,,,,,
+,Passed,11,,,,,,,
+,Failed,0,,,,,,,
+,,,,,,,,,
+#, CASE ID,DESCRIPTION,PRE-CONDITIONS, REQUEST BODY,STEPS,EXPECTED RESULT,RESPONSE BODY,ACTUAL RESULT,STATUS
+1,CUST_001,Verify Customer Deposit with Positive Whole Number,"1. The API server is running.
+","{
+    ""amount"": 50.25
+}","1. Send a POST request to  /customers/me/deposit/ with the above request body.
+","HTTP Status Code: 200 Created
+","{
+    ""message"": ""Deposit successful"",
+    ""new_balance"": 61.25
+}","{
+    ""message"": ""Deposit successful"",
+    ""new_balance"": 61.25
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+2,CUST_002,Verify Customer Deposit with Positive Decimal Number,"1. The API server is running.
+","{
+    ""amount"": 250.75
+}","1. Send a POST request to  /customers/me/deposit/ with the above request body.
+","HTTP Status Code: 200 Created
+","{
+    ""message"": ""Deposit successful"",
+    ""new_balance"": 312.0
+}","{
+    ""message"": ""Deposit successful"",
+    ""new_balance"": 312.0
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+3,CUST_003,Verify Customer Deposit with Large Amount,"1. The API server is running.
+","{
+    ""amount"": 10000000
+}","1. Send a POST request to  /customers/me/deposit/ with the above request body.
+","HTTP Status Code: 200 Created
+","{
+    ""message"": ""Deposit successful"",
+    ""new_balance"": 10000312.0
+}","{
+    ""message"": ""Deposit successful"",
+    ""new_balance"": 10000312.0
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+4,CUST_004,Verify Customer Deposit with Exact 0.01,"1. The API server is running.
+","{
+    ""amount"": 0.01
+}","1. Send a POST request to  /customers/me/deposit/ with the above request body.
+","HTTP Status Code: 200 Created
+","{
+    ""message"": ""Deposit successful"",
+    ""new_balance"": 10000312.01
+}","{
+    ""message"": ""Deposit successful"",
+    ""new_balance"": 10000312.01
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+5,CUST_005,Verify Deposit Field Allows Only Numeric Input,"1. The API server is running.
+","{
+    ""amount"": ""abc1234""
+}","1. Send a POST request to  /customers/me/deposit/ with the above request body.
+","HTTP Status Code: 400 Bad Request
+","{
+    ""error"": ""Invalid deposit amount""
+}","{
+    ""error"": ""Invalid deposit amount""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+6,CUST_006,Verify Deposit with Empty Field,"1. The API server is running.
+","{
+  
+}","1. Send a POST request to  /customers/me/deposit/ with the above request body.
+","HTTP Status Code: 400 Bad Request
+","{
+    ""error"": ""Invalid deposit amount""
+}","{
+    ""error"": ""Invalid deposit amount""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+7,CUST_007,Verify Deposit with Negative Amount,"1. The API server is running.
+","{
+    ""amount"": -500
+}","1. Send a POST request to  /customers/me/deposit/ with the above request body.
+","HTTP Status Code: 400 Bad Request
+","{
+    ""error"": ""Invalid deposit amount""
+}","{
+    ""error"": ""Invalid deposit amount""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+8,CUST_008,Verify Deposit with Zero Amount,"1. The API server is running.
+","{
+    ""amount"": 0
+}","1. Send a POST request to  /customers/me/deposit/ with the above request body.
+","HTTP Status Code: 400 Bad Request
+","{
+    ""error"": ""Invalid deposit amount""
+}","{
+    ""error"": ""Invalid deposit amount""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+9,CUST_009,Verify Deposit with Alphabetic Input,"1. The API server is running.
+","{
+    ""amount"": ""abc""
+}","1. Send a POST request to  /customers/me/deposit/ with the above request body.
+","HTTP Status Code: 400 Bad Request
+","{
+    ""error"": ""Invalid deposit amount""
+}","{
+    ""error"": ""Invalid deposit amount""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+10,CUST_010,Verify Deposit with Special Characters,"1. The API server is running.
+","{
+    ""amount"": ""@#$%""
+}","1. Send a POST request to  /customers/me/deposit/ with the above request body.
+","HTTP Status Code: 400 Bad Request
+","{
+    ""error"": ""Invalid deposit amount""
+}","{
+    ""error"": ""Invalid deposit amount""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+11,CUST_011, Verify Deposit with Input Exceeding Max Length,"1. The API server is running.
+","{
+    ""amount"": ""999999999999999999999999""
+}","1. Send a POST request to  /customers/me/deposit/ with the above request body.
+","HTTP Status Code: 400 Bad Request
+","{
+    ""error"": ""Invalid deposit amount""
+}","{
+    ""error"": ""Invalid deposit amount""
+}",Passed

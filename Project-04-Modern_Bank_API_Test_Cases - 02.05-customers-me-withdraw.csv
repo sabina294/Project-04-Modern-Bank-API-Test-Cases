@@ -1,0 +1,199 @@
+,Role,Customer ,,,,,,,
+,Project Name:,Modern Bank API ,,,,,,,
+,Feature Name:,Customers Me  Withdraw,,,,,,,
+,Reference Document:,,,,,,,,
+,Created By:,Sabina Yeasmin,,,,,,,
+,Updated By:,,,,,,,,
+,Date of Creation:,27 May 2025,,,,,,,
+,Number of  cases:,15,,,,,,,
+,Passed,15,,,,,,,
+,Failed,0,,,,,,,
+,,,,,,,,,
+#, CASE ID,DESCRIPTION,PRE-CONDITIONS, REQUEST BODY,STEPS,EXPECTED RESULT,RESPONSE BODY,ACTUAL RESULT,STATUS
+1,CUST_001,Verify customer withdraw valid amount.,"1. The API server is running.
+","{
+    ""amount"": 500
+}","1. Send a POST request to /customers/me/withdraw/ with the above request body.
+","HTTP Status Code: 200 Created
+","{
+    ""message"": ""Withdrawal successful"",
+    ""new_balance"": 9999812.01
+}","{
+    ""message"": ""Withdrawal successful"",
+    ""new_balance"": 9999812.01
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+2,CUST_002,Verify customer withdraw full available balance.,"1. The API server is running.
+","{
+    ""amount"": 1000
+}","1. Send a POST request to /customers/me/withdraw/ with the above request body.
+","HTTP Status Code: 200 Created
+","{
+    ""message"": ""Withdrawal successful"",
+    ""new_balance"": 9999812.01
+}","{
+    ""message"": ""Withdrawal successful"",
+    ""new_balance"": 9999812.01
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+3,CUST_003,Verify customer withdraw valid decimal amount.,"1. The API server is running.
+","{
+    ""amount"": 99.99
+}","1. Send a POST request to /customers/me/withdraw/ with the above request body.
+","HTTP Status Code: 200 Created
+","{
+    ""message"": ""Withdrawal successful"",
+    ""new_balance"": 9998712.02
+}","{
+    ""message"": ""Withdrawal successful"",
+    ""new_balance"": 9998712.02
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+4,CUST_004,Verify customer withdraw with trimmed input.,"1. The API server is running.
+","{
+    ""amount"": 100
+}","1. Send a POST request to /customers/me/withdraw/ with the above request body.
+","HTTP Status Code: 200 Created
+","{
+    ""message"": ""Withdrawal successful"",
+    ""new_balance"": 9998612.02
+}","{
+    ""message"": ""Withdrawal successful"",
+    ""new_balance"": 9998612.02
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+5,CUST_005,Verify customer withdraw small amount.,"1. The API server is running.
+","{
+    ""amount"": 0.01
+}","1. Send a POST request to /customers/me/withdraw/ with the above request body.
+","HTTP Status Code: 200 Created
+","{
+    ""message"": ""Withdrawal successful"",
+    ""new_balance"": 9998612.01
+}","{
+    ""message"": ""Withdrawal successful"",
+    ""new_balance"": 9998612.01
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+6,CUST_006,Verify customer withdraw more than available balance.,"1. The API server is running.
+","{
+    ""amount"": 200000000000000","1. Send a POST request to /customers/me/withdraw/ with the above request body.
+","HTTP Status Code: 400 Bad Request
+","{
+    ""error"": ""Insufficient funds""
+}","{
+    ""error"": ""Insufficient funds""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+7,CUST_007,Verify customer withdraw with amount = 0.,"1. The API server is running.
+","{
+    ""amount"": 0
+}","1. Send a POST request to /customers/me/withdraw/ with the above request body.
+","HTTP Status Code: 400 Bad Request
+","{
+    ""error"": ""Invalid withdrawal amount""
+}","{
+    ""error"": ""Invalid withdrawal amount""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+8,CUST_008,Verify customer withdraw negative amount.,"1. The API server is running.
+","{
+    ""amount"": -100
+}","1. Send a POST request to /customers/me/withdraw/ with the above request body.
+","HTTP Status Code: 400 Bad Request
+","{
+    ""error"": ""Invalid withdrawal amount""
+}","{
+    ""error"": ""Invalid withdrawal amount""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+9,CUST_009,Verify customer withdraw amount as string.,"1. The API server is running.
+","{
+    ""amount"": ""abc""
+}","1. Send a POST request to /customers/me/withdraw/ with the above request body.
+","HTTP Status Code: 400 Bad Request
+","{
+    ""error"": ""Invalid withdrawal amount""
+}","{
+    ""error"": ""Invalid withdrawal amount""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+10,CUST_010,Verify customer withdraw account ID missing.,"1. The API server is running.
+","{
+    ""amount"": ""abc""
+}","1. Send a POST request to /customers/me/withdraw/ with the above request body.
+","HTTP Status Code: 400 Bad Request
+","{
+    ""error"": ""Invalid withdrawal amount""
+}","{
+    ""error"": ""Invalid withdrawal amount""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+11,CUST_011,Verify customer withdraw amount missing.,"1. The API server is running.
+","{
+    """",
+}","1. Send a POST request to /customers/me/withdraw/ with the above request body.
+","HTTP Status Code: 400 Bad Request
+","{
+    ""error"": ""Invalid withdrawal amount""
+}","{
+    ""error"": ""Invalid withdrawal amount""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+12,CUST_012,Verify customer withdraw invalid account ID format.,"1. The API server is running.
+","{
+    ""amount"": 100
+}","1. Send a POST request to /customers/me/withdraw/ with the above request body.
+","HTTP Status Code: 200 Created
+","{
+    ""message"": ""Withdrawal successful"",
+    ""new_balance"": 9763512.01
+}","{
+    ""message"": ""Withdrawal successful"",
+    ""new_balance"": 9763512.01
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+13,CUST_013,Verify customer withdraw with more than 2 decimal places.,"1. The API server is running.
+","{
+    ""amount"": 99.999
+}","1. Send a POST request to /customers/me/withdraw/ with the above request body.
+","HTTP Status Code: 200 Created
+","{
+    ""message"": ""Withdrawal successful"",
+    ""new_balance"": 9763412.011
+}","{
+    ""message"": ""Withdrawal successful"",
+    ""new_balance"": 9763412.011
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+14,CUST_014,Verify customer auth token missing.,"1. The API server is running.
+",No authorization header,"1. Send a POST request to /customers/me/withdraw/ with the above request body.
+","HTTP Status Code: 400 Bad Request
+","{
+    ""error"": ""Invalid or expired token""
+}","{
+    ""error"": ""Invalid or expired token""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+15,CUST_015,Verify customer auth token expired.,"1. The API server is running.
+",Use expired token in headers,"1. Send a POST request to /customers/me/withdraw/ with the above request body.
+","HTTP Status Code: 400 Bad Request
+","{
+    ""error"": ""Invalid or expired token""
+}","{
+    ""error"": ""Invalid or expired token""
+}",Passed

@@ -1,0 +1,186 @@
+,Role,Customer ,,,,,,,
+,Project Name:,Modern Bank API ,,,,,,,
+,Feature Name:,Customers Me Transfer,,,,,,,
+,Reference Document:,,,,,,,,
+,Created By:,Sabina Yeasmin,,,,,,,
+,Updated By:,,,,,,,,
+,Date of Creation:,22 June 2025,,,,,,,
+,Number of  cases:,15,,,,,,,
+,Passed,15,,,,,,,
+,Failed,0,,,,,,,
+,,,,,,,,,
+#, CASE ID,DESCRIPTION,PRE-CONDITIONS, REQUEST BODY,STEPS,EXPECTED RESULT,RESPONSE BODY,ACTUAL RESULT,STATUS
+1,CUST_001,Verify customer transfer valid amount to valid account.,"1. The API server is running.
+","{
+   ""recipient_account_id"": 2,
+   ""amount"": 500
+}","1. Send a POST request to /customers/me/transfer/ with the above request body.
+","HTTP Status Code: 200 Created
+","{ 
+""message"": ""Transfer successful""
+ }","{ 
+""message"": ""Transfer successful""
+ }",Passed
+,,,,,,,,,
+,,,,,,,,,
+2,CUST_002,Verify customer transfer full balance.,"1. The API server is running.
+","{
+   ""recipient_account_id"": ""ACC998877665"",
+   ""amount"": 10000
+}","1. Send a POST request to /customers/me/transfer/ with the above request body.
+","HTTP Status Code: 200 Created
+","{ 
+""message"": ""Transfer successful""
+ }","{ 
+""message"": ""Transfer successful""
+ }",Passed
+,,,,,,,,,
+,,,,,,,,,
+3,CUST_003,Verify customer transfer decimal amount.,"1. The API server is running.
+","{
+   ""recipient_account_id"": ""ACC998877665"",
+   ""amount"": 99.999
+}","1. Send a POST request to /customers/me/transfer/ with the above request body.
+","HTTP Status Code: 200 Created
+","{ 
+""message"": ""Transfer successful""
+ }","{ 
+""message"": ""Transfer successful""
+ }",Passed
+,,,,,,,,,
+,,,,,,,,,
+4,CUST_004,Verify customer transfer trimmed input for account ID.,"1. The API server is running.
+","{
+    ""recipient_account_id"": ""ACC998877665"",
+    ""amount"": 100
+}","1. Send a POST request to /customers/me/transfer/ with the above request body.
+","HTTP Status Code: 200 Created
+","{ 
+""message"": ""Transfer successful""
+ }","{ 
+""message"": ""Transfer successful""
+ }",Passed
+,,,,,,,,,
+,,,,,,,,,
+5,CUST_005,Verify customer transfer missing recipient account ID.,"1. The API server is running.
+","{
+    ""amount"": 90000
+}","1. Send a POST request to /customers/me/transfer/ with the above request body.
+",HTTP Status Code: 400 Bad Request,"{ 
+""error"": ""Recipient account ID is required""
+ }","{ 
+""error"": ""Recipient account ID is required""
+ }",Passed
+,,,,,,,,,
+,,,,,,,,,
+6,CUST_006,Verify customer transfer missing amount.,"1. The API server is running.
+","{
+   ""recipient_account_id"": ""ACC998877665"",
+}","1. Send a POST request to /customers/me/transfer/ with the above request body.
+",HTTP Status Code: 400 Bad Request,"{ 
+""error"": ""Amount is required""
+ }","{ 
+""error"": ""Amount is required""
+ }",Passed
+,,,,,,,,,
+,,,,,,,,,
+7,CUST_007,Verify customer transfer amount = 0.,"1. The API server is running.
+","{
+   ""recipient_account_id"": ""ACC998877665"",
+   ""amount"": 0
+}","1. Send a POST request to /customers/me/transfer/ with the above request body.
+",HTTP Status Code: 400 Bad Request,"{
+ ""error"": ""Amount must be greater than 0"" 
+}","{
+ ""error"": ""Amount must be greater than 0"" 
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+8,CUST_008,Verify customer transfer amount is negative.,"1. The API server is running.
+","{
+  ""recipient_account_id"": ""ACC998877665"",
+  ""amount"": -100
+}","1. Send a POST request to /customers/me/transfer/ with the above request body.
+",HTTP Status Code: 400 Bad Request,"{
+ ""error"": ""Invalid transfer amount"" 
+}","{
+ ""error"": ""Invalid transfer amount"" 
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+9,CUST_009,Verify customer transfer non-numeric amount.,"1. The API server is running.
+","{
+  ""recipient_account_id"": ""ACC998877665"",
+  ""amount"": -""abc""
+}","1. Send a POST request to /customers/me/transfer/ with the above request body.
+",HTTP Status Code: 400 Bad Request,"{
+ ""error"": ""Amount must be a number"" 
+}","{
+ ""error"": ""Amount must be a number"" 
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+10,CUST_010,Verify customer transfer to account is same as from account,"1. The API server is running.
+","{
+   ""recipient_account_id"": ""ACC998877665"",
+   ""amount"": -100
+}","1. Send a POST request to /customers/me/transfer/ with the above request body.
+",HTTP Status Code: 400 Bad Request,"{
+ ""error"": ""Cannot transfer to same account"" 
+}","{
+ ""error"": ""Cannot transfer to same account"" 
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+11,CUST_011,Verify customer exceeds balance.,"1. The API server is running.
+","{
+   ""recipient_account_id"": ""ACC998877665"",
+   ""amount"": 15000
+}","1. Send a POST request to /customers/me/transfer/ with the above request body.
+",HTTP Status Code: 400 Bad Request,"{ 
+""error"": ""Insufficient balance"" 
+}","{ 
+""error"": ""Insufficient balance"" 
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+12,CUST_012,Verify customer invalid account format.,"1. The API server is running.
+","{
+  ""recipient_account_id"": ""ACC###"",
+  ""amount"": 15000
+}","1. Send a POST request to /customers/me/transfer/ with the above request body.
+",HTTP Status Code: 400 Bad Request,"{
+ ""error"": ""Invalid account format"" 
+}","{
+ ""error"": ""Invalid account format"" 
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+13,CUST_013,"Verify customer extra large amount (e.g., > daily limit).","1. The API server is running.
+","{
+  ""recipient_account_id"": ""ACC###"",
+  ""amount"": 100000
+}","1. Send a POST request to /customers/me/transfer/ with the above request body.
+",HTTP Status Code: 400 Bad Request,"{ 
+""error"": ""Transfer exceeds daily limit""
+ }","{ 
+""error"": ""Transfer exceeds daily limit""
+ }",Passed
+,,,,,,,,,
+,,,,,,,,,
+14,CUST_014,Verify customer unauthorized request (no token).,"1. The API server is running.
+",No headers or invalid token,"1. Send a POST request to /customers/me/transfer/ with the above request body.
+",HTTP Status Code: 400 Bad Request,"{ 
+""error"": ""Authentication credentials were not provided."" 
+}","{ 
+""error"": ""Authentication credentials were not provided."" 
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+15,CUST_015,Verify customer expired session token.,"1. The API server is running.
+",Header with expired token,"1. Send a POST request to /customers/me/transfer/ with the above request body.
+",HTTP Status Code: 400 Bad Request,"{ 
+""error"": ""Token has expired""
+ }","{ 
+""error"": ""Token has expired""
+ }",Passed

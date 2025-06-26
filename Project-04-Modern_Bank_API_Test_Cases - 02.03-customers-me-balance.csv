@@ -1,0 +1,101 @@
+,Role,Customer ,,,,,,,
+,Project Name:,Modern Bank API ,,,,,,,
+,Feature Name:,Customers Me Balance,,,,,,,
+,Reference Document:,,,,,,,,
+,Created By:,Sabina Yeasmin,,,,,,,
+,Updated By:,,,,,,,,
+,Date of Creation:,25 June 2025,,,,,,,
+,Number of  cases:,10,,,,,,,
+,Passed,10,,,,,,,
+,Failed,0,,,,,,,
+,,,,,,,,,
+#, CASE ID,DESCRIPTION,PRE-CONDITIONS, REQUEST BODY,STEPS,EXPECTED RESULT,RESPONSE BODY,ACTUAL RESULT,STATUS
+1,CUST_BAL_001	,Verify Balance Retrieval with Valid Token	,"API server is running
+User is logged in and has a valid token","{
+  ""balance"": 0
+}",1. Send a GET request to /customers/me/balance/ with a valid token,"HTTP Status Code: 201 Created
+","{
+    ""balance"": 11.0
+}","{
+    ""balance"": 11.0
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+2,CUST_BAL_002      ,Verify Balance Returns 0 for New Account	,"API server is running
+User is newly registered with no transactions","{
+  ""balance"": 0
+}",1. Send a GET request as a new user,"HTTP Status Code: 201 Created
+","{
+    ""balance"": 0
+}","{
+    ""balance"": 0
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+3,CUST_BAL_003,Verify Unauthorized Access Without Token	,API server is running	,N/A,1. Send GET request without authentication,HTTP Status Code: 400 Bad Request,"{ 
+""error"": ""Authentication credentials were not provided.""
+}","{ 
+""error"": ""Authentication credentials were not provided.""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+3,CUST_BAL_004,Verify Access with Invalid Token	,API server is running	,N/A,1. Send GET request with invalid/expired token,HTTP Status Code: 400 Bad Request,"{ 
+""error"": ""Invalid token""
+}","{ 
+""error"": ""Invalid token""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+4,CUST_BAL_005,Verify Balance Response Structure	,"API server is running
+User is logged in","{
+  ""balance"": 0
+}","1. Send GET request and validate that response only contains a ""balance"" key","HTTP Status Code: 201 Created
+","{
+    ""balance"": 11.0
+}","{
+    ""balance"": 11.0
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+4,CUST_BAL_006,Verify Balance is Numeric (Integer or Float)	,"API server is running
+User is logged in","{
+  ""balance"": 0
+}",1. Send request and validate type of balance is integer or float,"HTTP Status Code: 201 Created
+","{ 
+""balance"": <numeric>
+} ","{ 
+""balance"": 1250.75 
+} ",Passed
+,,,,,,,,,
+,,,,,,,,,
+5,CUST_BAL_007,Verify Response Time Within 2 Seconds	,"API server is running
+User is logged in","{
+  ""balance"": 0
+}","1. Send GET request
+2. Measure response time","HTTP Status Code: 201 Created
+",Response in < 2000ms,Response Time: 850ms,Passed
+,,,,,,,,,
+,,,,,,,,,
+6,CUST_BAL_008,Verify No Extra Information in Response	,"API server is running
+User is logged in","{
+  ""balance"": 0
+}",1. Ensure response JSON contains only the balance field,"HTTP Status Code: 201 Created
+","{ 
+""balance"": <number> 
+} ","{ 
+""balance"": 1250 
+} ",Passed
+,,,,,,,,,
+,,,,,,,,,
+7,CUST_BAL_009,Verify Request Method is Restricted to GET Only	,API server is running	,N/A,1. Try to send POST/PUT/DELETE request to /customers/me/balance/,HTTP Status Code: 400 Bad Request,HTTP 405 Method Not Allowed,HTTP 405 Method Not Allowed,Passed
+,,,,,,,,,
+,,,,,,,,,
+10,CUST_BAL_010,Verify Consistent Balance After Multiple GETs	,"API server is running
+User is logged in","{
+  ""balance"": 0
+}",1. Send GET request multiple times and confirm the balance does not change randomly,"HTTP Status Code: 201 Created
+","{ 
+""balance"": 1250
+ }","{ 
+""balance"": 1250
+ }",Passed

@@ -1,0 +1,243 @@
+,Role,Customer ,,,,,,,
+,Project Name:,Modern Bank API ,,,,,,,
+,Feature Name:,Customers Me Transactions Search,,,,,,,
+,Reference Document:,,,,,,,,
+,Created By:,Sabina Yeasmin,,,,,,,
+,Updated By:,,,,,,,,
+,Date of Creation:,25 June 2025,,,,,,,
+,Number of  cases:,14,,,,,,,
+,Passed,14,,,,,,,
+,Failed,0,,,,,,,
+,,,,,,,,,
+#, CASE ID,DESCRIPTION,PRE-CONDITIONS, REQUEST BODY,STEPS,EXPECTED RESULT,RESPONSE BODY,ACTUAL RESULT,STATUS
+1,CUST_TXNS_001        ,Verify search by keyword in description,"Valid token, matching description exists","[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T10:01:58.568Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to/customers/me/transactions/search/.
+","Returns all transactions where description contains ""salary""","[
+ {
+""description"": ""Salary for June"", ...
+}
+ ]",Returned matching records	,Passed
+,,,,,,,,,
+,,,,,,,,,
+2,CUST_TXNS_002,Verify search by full exact description text,Valid token,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T10:01:58.568Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to/customers/me/transactions/search/.
+",Returns exact description matches,"[
+ {
+""description"": ""ATM withdrawal"", ...
+}
+ ]",Matches returned exactly	,Passed
+,,,,,,,,,
+,,,,,,,,,
+3,CUST_TXNS_003,Verify search by partial transaction type,Valid token,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T10:01:58.568Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to/customers/me/transactions/search/.
+","Returns transactions like ""withdrawal"" if partial match is allowed","[
+ {""transaction_type"": ""withdrawal"", ...
+}
+]",Returned expected partial matches	,Passed
+,,,,,,,,,
+,,,,,,,,,
+4,CUST_TXNS_004,Verify search by amount value,Valid token,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T10:01:58.568Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to/customers/me/transactions/search/.
+",Returns transactions with amount 500 or in description mentioning 500,"[
+ {
+""amount"": 500, ""description"": ""Paid 500 BDT""
+}
+]",Both amount and text matched	,Passed
+,,,,,,,,,
+,,,,,,,,,
+5,CUST_TXNS_005,Verify case-insensitive search in description,Valid token,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T10:01:58.568Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to/customers/me/transactions/search/.
+",Both return the same result,"[
+{
+""description"": ""Salary Credited""
+}
+]",Case-insensitive search works	,Passed
+,,,,,,,,,
+,,,,,,,,,
+6,CUST_TXNS_006,Verify search by timestamp substring,Valid token,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T10:01:58.568Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to/customers/me/transactions/search/.
+",Returns all transactions on that date,"[
+{
+""timestamp"": ""2025-06-25T10:01:58Z""
+}
+]",All records from specified date returned	,Passed
+,,,,,,,,,
+,,,,,,,,,
+7,CUST_TXNS_007,Verify search returns empty array when no match is found,Valid token,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T10:01:58.568Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to/customers/me/transactions/search/.
+","HTTP Status Code: 200 Created
+",[],"No matching results, empty array	",Passed
+,,,,,,,,,
+,,,,,,,,,
+8,CUST_TXNS_008,Verify search returns sorted results if sorting supported,Valid token,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T10:01:58.568Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to/customers/me/transactions/search/.
+",Returns matching transactions sorted by latest timestamp,"[
+{
+""timestamp"": ""2025-06-26T...Z""}, {""timestamp"": ""2025-06-25T...Z""
+}
+]",Sorted by latest	,Passed
+,,,,,,,,,
+,,,,,,,,,
+9,CUST_TXNS_009,Verify search with special characters,"Valid token, record contains symbols","[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T10:01:58.568Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to/customers/me/transactions/search/.
+","1. Send a POST request to/customers/me/transactions/search/.
+
+","[
+{
+""description"": ""Gift & Bonus <Approved>""
+}
+]",Special characters handled correctly	,Passed
+,,,,,,,,,
+,,,,,,,,,
+10,CUST_TXNS_010,Verify search works with pagination,"Valid token
+","[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T10:01:58.568Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to/customers/me/transactions/search/.
+",Returns 10 results of first page with the search term,"{ 
+""results"": [...], ""page"": 1, ""page_size"": 10
+ }",Pagination works with search	,Passed
+,,,,,,,,,
+,,,,,,,,,
+11,CUST_TXNS_011,Verify unauthorized request without token,API is running,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T10:01:58.568Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to/customers/me/transactions/search/.
+","HTTP Status Code: 400 Bad Request
+
+","{
+ ""error"": ""Authentication required"" 
+}",Unauthorized error as expected	,Passed
+,,,,,,,,,
+,,,,,,,,,
+12,CUST_TXNS_012,Verify search with numeric string vs. actual number,Valid token,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T10:01:58.568Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to/customers/me/transactions/search/.
+","Returns transactions where description or amount matches ""100""","[
+{
+""amount"": 100}, {""description"": ""Paid 100""
+}
+]",Both number and text matched	,Passed
+,,,,,,,,,
+,,,,,,,,,
+13,CUST_TXNS_013,"Verify malformed query value (e.g., ?search= only)",Valid token,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T10:01:58.568Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to/customers/me/transactions/search/.
+",Returns either all transactions or an error depending on design,"{
+ ""error"": ""Invalid search parameter"" 
+} or full list",Returned validation error or fallback list	,Passed
+,,,,,,,,,
+,,,,,,,,,
+14,CUST_TXNS_014,Verify search response includes valid transaction structure,Valid token,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T10:01:58.568Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to/customers/me/transactions/search/.
+","Each transaction includes all required keys: transaction_id, amount, timestamp, etc.","[
+{
+""transaction_id"": ..., ""amount"": ..., ""timestamp"": ..., ...
+}
+]",All required fields verified	,Passed

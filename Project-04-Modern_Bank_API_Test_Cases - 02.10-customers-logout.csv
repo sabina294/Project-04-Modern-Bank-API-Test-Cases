@@ -1,0 +1,57 @@
+,Role,Customer ,,,,,,,
+,Project Name:,Modern Bank API ,,,,,,,
+,Feature Name:,Customers Logout,,,,,,,
+,Reference Document:,,,,,,,,
+,Created By:,Sabina Yeasmin,,,,,,,
+,Updated By:,,,,,,,,
+,Date of Creation:,25 June 2025,,,,,,,
+,Number of  cases:,8,,,,,,,
+,Passed,8,,,,,,,
+,Failed,0,,,,,,,
+,,,,,,,,,
+#, CASE ID,DESCRIPTION,PRE-CONDITIONS, REQUEST BODY,STEPS,EXPECTED RESULT,RESPONSE BODY,ACTUAL RESULT,STATUS
+1,CUST_LOGOUT_001	,Verify successful logout with valid token,User is logged in and has a valid JWT token,None,1. Send POST request to /customers/logout/ with Authorization header,"HTTP Status Code: 200 Created
+","{
+ ""message"": ""Logout successful"" 
+}",User successfully logged out,Passed
+,,,,,,,,,
+,,,,,,,,,
+2,CUST_LOGOUT_002   ,Verify logout request without token,The API server is running,None,1. Send POST request to /customers/logout/ without Authorization header,"HTTP Status Code: 400 Bad Request
+","{ 
+""error"": ""Authorization token required""
+ }",Error for missing token,Passed
+,,,,,,,,,
+,,,,,,,,,
+3,CUST_LOGOUT_003,Verify logout with expired token,JWT token is expired,None,1. Send POST request with an expired token,"HTTP Status Code: 400 Bad Request
+","{
+ ""error"": ""Token has expired""
+ }
+",Token expiration correctly handled,Passed
+,,,,,,,,,
+,,,,,,,,,
+4,CUST_LOGOUT_004,Verify logout with invalid token,JWT token is manually altered (invalid),None,1. Send POST request with an invalid token,"HTTP Status Code: 400 Bad Request
+","{ 
+""error"": ""Invalid token"" 
+}",Invalid token detected,Passed
+,,,,,,,,,
+,,,,,,,,,
+5,CUST_LOGOUT_005,Verify logout with already logged out token,Token was used once and logged out,None,1. Reuse previously used (invalidated) token,"HTTP Status Code: 400 Bad Request
+","{
+ ""error"": ""Token already invalidated"" 
+}",Reuse of token rejected,Passed
+,,,,,,,,,
+,,,,,,,,,
+6,CUST_LOGOUT_006,Verify that logout does not accept GET method,Valid JWT token	,None,1. Send GET request to /customers/logout/,"HTTP Status Code: 400 Bad Request
+","{
+ ""error"": ""Method not allowed"" 
+}",GET method properly restricted,Passed
+,,,,,,,,,
+,,,,,,,,,
+7,CUST_LOGOUT_007,Verify response time is under 1 second,Valid JWT token	,None,1. Send POST request and measure response time,Response Time < 1000ms,"{ 
+""message"": ""Logout successful""
+ }",Measured response time was within limit,Passed
+,,,,,,,,,
+,,,,,,,,,
+8,CUST_LOGOUT_008,Verify logout response structure,Valid JWT token	,None,1. Send POST and validate keys like message,"{ ""message"": ""Logout successful"" }","{
+ ""message"": ""Logout successful"" 
+}",Structure is as expected,Passed

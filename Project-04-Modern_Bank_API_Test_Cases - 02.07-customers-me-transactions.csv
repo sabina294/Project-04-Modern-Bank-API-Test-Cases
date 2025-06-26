@@ -1,0 +1,210 @@
+,Role,Customer ,,,,,,,
+,Project Name:,Modern Bank API ,,,,,,,
+,Feature Name:,Customers Me Transactions,,,,,,,
+,Reference Document:,,,,,,,,
+,Created By:,Sabina Yeasmin,,,,,,,
+,Updated By:,,,,,,,,
+,Date of Creation:,25 June 2025,,,,,,,
+,Number of  cases:,12,,,,,,,
+,Passed,12,,,,,,,
+,Failed,0,,,,,,,
+,,,,,,,,,
+#, CASE ID,DESCRIPTION,PRE-CONDITIONS, REQUEST BODY,STEPS,EXPECTED RESULT,RESPONSE BODY,ACTUAL RESULT,STATUS
+1,CUST_TXN_001	,Verify successful fetch of customer transaction list	,"API server is running
+Valid token provided","[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:13:59.929Z"",
+    ""description"": ""string""
+  }
+]",1. Send GET /customers/me/transactions/ with valid Bearer token,"HTTP Status Code: 200 Created
+","[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:13:59.929Z"",
+    ""description"": ""string""
+  }
+]","[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:13:59.929Z"",
+    ""description"": ""string""
+  }
+]",Passed
+,,,,,,,,,
+,,,,,,,,,
+2,CUST_TXN_002,Verify transaction structure and fields	,Valid token and transactions exist	,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:13:59.929Z"",
+    ""description"": ""string""
+  }
+]","1. Check each object in response includes: transaction_id, account_id, transaction_type, amount, timestamp, description",All fields are present and have correct data types,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:13:59.929Z"",
+    ""description"": ""string""
+  }
+]","[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:13:59.929Z"",
+    ""description"": ""string""
+  }
+]",Passed
+,,,,,,,,,
+,,,,,,,,,
+3,CUST_TXN_003,Verify empty response for new user	,New user with no transactions	,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:13:59.929Z"",
+    ""description"": ""string""
+  }
+]",1. Send request as newly registered user,"HTTP Status Code: 200 Created
+",[],[],Passed
+,,,,,,,,,
+,,,,,,,,,
+4,CUST_TXN_004,Verify data types of fields	,Existing transaction data present	,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:13:59.929Z"",
+    ""description"": ""string""
+  }
+]","1. Validate: transaction_id and account_id are integers, amount is float, timestamp is ISO format",All fields have correct data types,"transaction_id, account_id = integer
+amount = float
+timestamp = ISO format
+description = string",Types are correct in each response item,Passed
+,,,,,,,,,
+,,,,,,,,,
+5,CUST_TXN_005,Verify only allowed transaction types are present	,Transaction list contains different types	,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:13:59.929Z"",
+    ""description"": ""string""
+  }
+]","1. Check if transaction_type is one of: ""deposit"", ""withdrawal"", ""transfer""",All transaction_type values are from the allowed list,"transaction_type ∈ { ""deposit"", ""withdrawal"", ""transfer"" }","All values are valid (no unexpected type like ""refund"" or ""bonus"")",Passed
+,,,,,,,,,
+,,,,,,,,,
+6,CUST_TXN_006,Verify timestamp format is ISO 8601	,Transaction response received	,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:13:59.929Z"",
+    ""description"": ""string""
+  }
+]",1. Check timestamp format: YYYY-MM-DDTHH:mm:ss.sssZ,All timestamps follow valid ISO 8601 format,Format = YYYY-MM-DDTHH:MM:SS.sssZ,"Example: ""2025-06-25T09:13:59.929Z"" — all follow valid ISO 8601",Passed
+,,,,,,,,,
+,,,,,,,,,
+7,CUST_TXN_007,Verify response with special characters in description	,At least one transaction includes special chars	,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:13:59.929Z"",
+    ""description"": ""string""
+  }
+]","1. Send request and validate special characters like &, <, >, %, $ in description",No rendering or parsing issues; strings are escaped properly,"Description may contain &, <, >, %, $, etc., and should be JSON-safe",Special characters handled and displayed properly; no rendering or security issues,Passed
+,,,,,,,,,
+,,,,,,,,,
+8,CUST_TXN_008,Verify unauthorized request without token	,API server running	,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:13:59.929Z"",
+    ""description"": ""string""
+  }
+]",1. Send request without Authorization header,"HTTP Status Code: 400 Bad Request
+","{ 
+""error"": ""Authentication credentials were not provided.""
+ }","{ 
+""error"": ""Authentication credentials were not provided.""
+ }",Passed
+,,,,,,,,,
+,,,,,,,,,
+9,CUST_TXN_009,Verify access with expired token	,Token expired	,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:13:59.929Z"",
+    ""description"": ""string""
+  }
+]",1. Send request with expired token,"HTTP Status Code: 400 Bad Request
+","{
+ ""error"": ""Token has expired"" 
+}	","{
+ ""error"": ""Token has expired"" 
+}	",Passed
+,,,,,,,,,
+,,,,,,,,,
+10,CUST_TXN_010,Verify response time is within acceptable limit	,API server stable	,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:13:59.929Z"",
+    ""description"": ""string""
+  }
+]","1. Send request
+2. Measure time between request and response",Response is returned in under 2 seconds,< 2000ms,Response returned in ~750ms	,Passed
+,,,,,,,,,
+,,,,,,,,,
+11,CUST_TXN_011,Verify large number of transactions is paginated or listed	,User with many transactions (1000+)	,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:13:59.929Z"",
+    ""description"": ""string""
+  }
+]","1. Send request
+2. Check if pagination is used (optional: limit, page query params)","HTTP Status Code: 200 Created
+","limit, offset, page, total_count, etc.",Pagination metadata present or reasonable number of transactions returned (chunked list),Passed
+,,,,,,,,,
+,,,,,,,,,
+12,CUST_TXN_012,Verify response doesn’t expose sensitive user information	,Customer logged in	,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:13:59.929Z"",
+    ""description"": ""string""
+  }
+]","1. Inspect response to ensure it doesn’t contain fields like email, password, token, etc.",Only transaction-related fields are returned,"Response should not contain email, password, token, etc. Only:
+✓ transaction_id, account_id, transaction_type, amount, timestamp, description",No sensitive fields found in response,Passed

@@ -1,0 +1,259 @@
+,Role,Customer ,,,,,,,
+,Project Name:,Modern Bank API ,,,,,,,
+,Feature Name:,Customers Me Transactions Filter,,,,,,,
+,Reference Document:,,,,,,,,
+,Created By:,Sabina Yeasmin,,,,,,,
+,Updated By:,,,,,,,,
+,Date of Creation:,25 June 2025,,,,,,,
+,Number of  cases:,15,,,,,,,
+,Passed,15,,,,,,,
+,Failed,0,,,,,,,
+,,,,,,,,,
+#, CASE ID,DESCRIPTION,PRE-CONDITIONS, REQUEST BODY,STEPS,EXPECTED RESULT,RESPONSE BODY,ACTUAL RESULT,STATUS
+1,CUST_TXNF_001	,"Verify filtering by transaction type = ""deposit""","Valid token, existing ""deposit"" records","[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:39:21.047Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to /customers/me/transactions/filter/.
+","HTTP 200 OK
+Only transactions with ""transaction_type"": ""deposit"" are returned","[
+{
+""transaction_type"": ""deposit"", ...
+}
+]",As expected	,Passed
+,,,,,,,,,
+,,,,,,,,,
+2,CUST_TXNF_002 ,"Verify filtering by transaction type = ""withdrawal""","Valid token, existing ""withdrawal"" records","[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:39:21.047Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to /customers/me/transactions/filter/.
+","Only ""withdrawal"" transactions are returned","[
+{
+""transaction_type"": ""withdrawal"", ...
+}
+]",As expected	,Passed
+,,,,,,,,,
+,,,,,,,,,
+3,CUST_TXNF_003,Verify filtering by date range (start and end date),"Valid token, data between selected dates","[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:39:21.047Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to /customers/me/transactions/filter/.
+",Transactions within specified range are returned,"[
+{
+""timestamp"": ""2025-06-20T08:00:00Z"", ...
+}
+]",As expected	,Passed
+,,,,,,,,,
+,,,,,,,,,
+4,CUST_TXNF_004,Verify filtering by minimum amount,Valid token,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:39:21.047Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to /customers/me/transactions/filter/.
+",Only transactions with amount >= 100 are returned,"[
+{
+""amount"": 150, ...
+}
+]",As expected	,Passed
+,,,,,,,,,
+,,,,,,,,,
+5,CUST_TXNF_005,Verify filtering by maximum amount,Valid token,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:39:21.047Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to /customers/me/transactions/filter/.
+",Only transactions with amount <= 500 are returned,"[
+{
+""amount"": 450, ...
+}
+]",As expected	,Passed
+,,,,,,,,,
+,,,,,,,,,
+6,CUST_TXNF_006,Verify filtering by amount range,Valid token,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:39:21.047Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to /customers/me/transactions/filter/.
+",Only transactions where 100 <= amount <= 500,"[
+{
+""amount"": 250, ...
+}
+]",As expected	,Passed
+,,,,,,,,,
+,,,,,,,,,
+7,CUST_TXNF_007,Verify combined filters (type + date + amount),Valid token,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:39:21.047Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to /customers/me/transactions/filter/.
+",Transactions matching all criteria returned,"[
+ {
+""transaction_type"": ""deposit"", ""amount"": 300, ""timestamp"": ""2025-06-20T12:00:00Z""
+}
+]",As expected	,Passed
+,,,,,,,,,
+,,,,,,,,,
+8,CUST_TXNF_008,Verify filtering returns empty if no records match,Valid token,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:39:21.047Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to /customers/me/transactions/filter/.
+","HTTP 200 OK
+Empty array []",[],[],Passed
+,,,,,,,,,
+,,,,,,,,,
+9,CUST_TXNF_009,Verify filtering with invalid query parameter,Valid token,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:39:21.047Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to /customers/me/transactions/filter/.
+",HTTP 400 Bad Request or error indicating invalid parameter,"{ ""error"": ""Invalid filter parameter"" }",As expected	,Passed
+,,,,,,,,,
+,,,,,,,,,
+10,CUST_TXNF_010,Verify unauthorized request without token,API server is running,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:39:21.047Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to /customers/me/transactions/filter/.
+","HTTP 401 Unauthorized
+{ ""error"": ""Authentication required"" }","{ ""error"": ""Authentication required"" }",As expected	,Passed
+,,,,,,,,,
+,,,,,,,,,
+11,CUST_TXNF_011,Verify response structure remains the same after filtering,"Valid token
+","[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:39:21.047Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to /customers/me/transactions/filter/.
+","Each result includes transaction_id, account_id, transaction_type, amount, timestamp, description","[
+{
+""transaction_id"": ..., ""account_id"": ..., ""transaction_type"": ..., ""amount"": ..., ""timestamp"": ..., ""description"": ...
+}
+]",As expected	,Passed
+,,,,,,,,,
+,,,,,,,,,
+12,CUST_TXNF_012,Verify response with special characters in description (filtered),"Valid token, filtered data with special chars","[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:39:21.047Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to /customers/me/transactions/filter/.
+",Returned descriptions render properly without breaking JSON,"[
+{
+""description"": ""Transfer to <savings> & bonuses""
+}
+]",No JSON issues	,Passed
+,,,,,,,,,
+,,,,,,,,,
+13,CUST_TXNF_013,Verify that pagination works with filtering,"Valid token, large filtered data set	","[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:39:21.047Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to /customers/me/transactions/filter/.
+",Returns page 2 with 10 items (if supported),"{ 
+""results"": [...], ""page"": 2, ""page_size"": 10 
+}
+",As expected	,Passed
+,,,,,,,,,
+,,,,,,,,,
+14,CUST_TXNF_014,Verify sorting with filtering (if supported),"Valid token
+","[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:39:21.047Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to /customers/me/transactions/filter/.
+",Data is sorted correctly within filtered results,"[
+{
+""timestamp"": ""2025-06-01T..."", ...}, {""timestamp"": ""2025-06-10T..."", ...
+}
+]",As expected	,Passed
+,,,,,,,,,
+,,,,,,,,,
+15,CUST_TXNF_015,Verify timestamp format in filtered results,"Valid token
+
+","[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""string"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-25T09:39:21.047Z"",
+    ""description"": ""string""
+  }
+]","1. Send a POST request to /customers/me/transactions/filter/.
+",All timestamp values follow ISO 8601 format,"[
+{
+""timestamp"": ""2025-06-25T09:39:21.047Z""
+}
+]",ISO format valid,Passed

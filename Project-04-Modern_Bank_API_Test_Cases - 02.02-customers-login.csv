@@ -1,0 +1,112 @@
+,Role,Customer ,,,,,,,
+,Project Name:,Modern Bank API ,,,,,,,
+,Feature Name:,Customers Login,,,,,,,
+,Reference Document:,,,,,,,,
+,Created By:,Sabina Yeasmin,,,,,,,
+,Updated By:,,,,,,,,
+,Date of Creation:,23 June 2025,,,,,,,
+,Number of  cases:,10,,,,,,,
+,Passed,10,,,,,,,
+,Failed,0,,,,,,,
+,,,,,,,,,
+#, CASE ID,DESCRIPTION,PRE-CONDITIONS, REQUEST BODY,STEPS,EXPECTED RESULT,RESPONSE BODY,ACTUAL RESULT,STATUS
+1,CUST_LOGIN_001	,Verify Login with Valid Credentials,The API server is running,"{
+  ""email"": ""john.doe@example.com"",
+  ""password"": ""password123""
+}",1. Send a POST request to /customers/login/ with valid email and password.,"HTTP Status Code: 201 Created
+","{
+    ""message"": ""Customer Login successful"" 
+}","{
+    ""message"": ""Login successful"" 
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+2,CUST_LOGIN_002   ,Verify Login with Invalid Password,The API server is running,"{
+  ""email"": ""john.doe@example.com"",
+  ""password"": ""wrongpass""
+}",1. Send a POST request with valid email and incorrect password.,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""Invalid credentials""
+}","{
+    ""error"": ""Invalid credentials""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+3,CUST_LOGIN_003       ,Verify Login with Unregistered Email,The API server is running,"{
+  ""email"": ""unreg@example.com"",
+  ""password"": ""password123""
+}",1. Send a POST request with unregistered email.,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""Invalid credentials""
+}","{
+     ""error"": ""Invalid email or password"" 
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+4,CUST_LOGIN_004,Verify Login with Empty Email Field,The API server is running,"{
+  ""email"": "" "",
+  ""password"": ""password123""
+}",1. Send a POST request with an empty email field.,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""Email and password are required""
+}","{
+   ""error"": ""Email is required"""" 
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+5,CUST_LOGIN_005,Verify Login with Empty Password Field,The API server is running,"{
+  ""email"": ""john.doe@example.com"",
+  ""password"": "" ""
+}",1. Send a POST request with an empty password field.,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""Email and password are required""
+}","{
+   ""error"": ""Password is required"""" 
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+6,CUST_LOGIN_006,Verify Login with Both Fields Empty,The API server is running,"{
+  ""email"": "" "",
+  ""password"": "" ""
+}",1. Send a POST request with both fields empty.,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""Email and password are required""
+}","{
+    ""error"": ""Email and password are required""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+7,CUST_LOGIN_007,Verify Login with Invalid Email Format,The API server is running,"{
+  ""email"": ""john.doe"",
+  ""password"": ""password123""
+}",1. Send a POST request with improperly formatted email.,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""Invalid credentials""
+}","{
+   ""error"": ""Invalid email format""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+8,CUST_LOGIN_008,Verify Login with SQL Injection Attempt,The API server is running,"{
+  ""email"": ""john.doe@example.com"",
+  ""password"": "" "" OR '1'='1""
+}",1. Send a POST request with SQL injection pattern in password.,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""Email and password are required""
+}","{
+   ""error"": ""Password is required"""" 
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+9,CUST_LOGIN_009,Verify Login with Script Injection in Email,The API server is running,"{
+  ""email"": ""<script>alert(1)</script>"",
+  ""password"": ""password123""
+}",1. Send a POST request with XSS content in email field.,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""Invalid credentials""
+}","{
+    ""error"": ""Invalid credentials""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+10,CUST_LOGIN_010,Verify Response Time is Under 2 Seconds,The API server is running,"{
+  ""email"": ""john.doe@example.com"",
+  ""password"": ""password123""
+}",1. Send a valid login request. Measure response time.,"HTTP Status Code: 201 Created
+","{
+    ""message"": ""Customer Login successful"" 
+}","{
+    ""message"": ""Login successful"" 
+}",Passed
