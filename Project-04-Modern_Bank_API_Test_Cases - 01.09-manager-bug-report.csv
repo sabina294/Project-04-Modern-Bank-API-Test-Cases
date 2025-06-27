@@ -1,0 +1,17 @@
+Bug Report,,,,,,
+"Project Name: Managers Registration
+Report Created By:  Sabina Yeasmin
+Report Creation Date: 27 Jun 2025
+Number of Bugs: 01",,,,,,
+Bug ID,Title,Description,Steps to reproduce,Request Body,Expected result,Actual result
+Bug-01,Username and Password Boolean Verification Fails,"During the manager registration process, the Username and Password fields are incorrectly accepting Boolean values (true or false) instead of being strictly validated as string inputs. ","1. Send a POST request to /managers/register/ with the above request body
+","{
+  ""username"": ""true"",
+  ""password"": ""true""
+}","{
+    ""error"": ""Username and password are required""
+}
+","{
+    ""message"": ""Manager registered successfully""
+}
+"

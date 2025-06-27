@@ -1,0 +1,124 @@
+,Role,Bank Manager ,,,,,,,
+,Project Name:,Modern Bank API ,,,,,,,
+,Feature Name:,Manager Registration,,,,,,,
+,Reference Document:,,,,,,,,
+,Created By:,Sabina Yeasmin,,,,,,,
+,Updated By:,,,,,,,,
+,Date of Creation:,25 May 2025,,,,,,,
+,Number of  cases:,10,,,,,,,
+,Passed,9,,,,,,,
+,Failed,1,,,,,,,
+,,,,,,,,,
+#, CASE ID,DESCRIPTION,PRE-CONDITIONS, REQUEST BODY,STEPS,EXPECTED RESULT,RESPONSE BODY,ACTUAL RESULT,STATUS
+1,MAN_REG_001,MAN_REG_002,"1. The API server is running.
+","{
+    ""username"": "" test manager"",
+    ""password"": ""123456""
+}",1. Send a POST request to /managers/register/ with the above request body,"HTTP Status Code: 201 Created
+","{
+    ""message"": Manager registered successfully
+}
+","{
+    ""message"": Manager registered successfully
+}
+",Passed
+,,,,,,,,,
+,,,,,,,,,
+2,MAN_REG_002,MAN_REG_003,"1. The API server is running.
+","{
+    ""username"": "" test manager"",
+    ""password"": ""123456""
+}",1. Send a POST request to /managers/register/ with the above request body,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""Username already exists""
+}","{
+    ""error"": ""Username already exists""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+3,MAN_REG_003,Verify registration attempt with a missing username field.,"1. The API server is running.
+","{
+    ""password"": ""123456""
+}
+",1. Send a POST request to /managers/register/ with the above request body,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""Username and password are required""
+}","{
+    ""error"": ""Username and password are required""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+4,MAN_REG_004,Verify registration attempt with a missing password field.,"1. The API server is running.
+","{
+    ""username"": ""test manager""
+}
+",1. Send a POST request to /managers/register/ with the above request body,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""Username and password are required""
+}","{
+    ""error"": ""Username and password are required""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+5,MAN_REG_005,Verify  manager registration with username and password blank.,"1. The API server is running.
+","{
+    ""username"": """",
+    ""password"": """"
+}",1. Send a POST request to /managers/register/ with the above request body,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""Username and password are required""
+}","{
+    ""error"": ""Username and password are required""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+6,MAN_REG_006,Verify registration attempt with null value for username.,"1. The API server is running.
+","{
+    ""username"": ""null"",
+    ""password"": ""123456""
+}",1. Send a POST request to /managers/register/ with the above request body,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""Username and password are required""
+}","{
+    ""error"": ""Username and password are required""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+7,MAN_REG_007,Verify registration attempt with an empty string for username.,"1. The API server is running.
+","{
+    ""username"": """",
+    ""password"": ""123456""
+}",1. Send a POST request to /managers/register/ with the above request body,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""Username and password are required""
+}","{
+    ""error"": ""Username and password are required""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+8,MAN_REG_008,Verify registration attempt with an empty string for password.,"1. The API server is running.
+","{
+    ""username"": ""test member"",
+    ""password"": """"
+}",1. Send a POST request to /managers/register/ with the above request body,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""Username and password are required""
+}","{
+    ""error"": ""Username and password are required""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+9,MAN_REG_009,Verify registration attempt with null value for password.,"1. The API server is running.
+","{
+    ""username"": ""test member"",
+    ""password"": ""null""
+}",1. Send a POST request to /managers/register/ with the above request body,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""Username and password are required""
+}","{
+    ""error"": ""Username and password are required""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+10,MAN_REG_010,Verify  manager registration with username and password Boolean.,"1. The API server is running.
+","{
+    ""username"": ""true"",
+    ""password"": ""true""
+}",1. Send a POST request to /managers/register/ with the above request body,HTTP Status Code: 400 Bad Request,"{
+    ""error"": ""Username and password are required""
+}","{
+    ""message"": Manager registered successfully
+}
+",Failed

@@ -1,0 +1,136 @@
+,Role,Bank Manager ,,,,,,,
+,Project Name:,Modern Bank API ,,,,,,,
+,Feature Name:,Manager Customers,,,,,,,
+,Reference Document:,,,,,,,,
+,Created By:,Sabina Yeasmin,,,,,,,
+,Updated By:,,,,,,,,
+,Date of Creation:,27 June 2025,,,,,,,
+,Number of  cases:,10,,,,,,,
+,Passed,10,,,,,,,
+,Failed,0,,,,,,,
+,,,,,,,,,
+#, CASE ID,DESCRIPTION,PRE-CONDITIONS, REQUEST BODY,STEPS,EXPECTED RESULT,RESPONSE BODY,ACTUAL RESULT,STATUS
+1,MGR_CUSTOMERS_001	,Verify customers list with valid token	,Manager is authenticated	,"[
+  {
+    ""account_id"": 0,
+    ""name"": ""string"",
+    ""email"": ""user@example.com""
+  }
+]",Send GET to /managers/customers/ with valid token,"HTTP Status Code: 201 Created
+","[
+  {
+    ""account_id"": 0,
+    ""name"": ""string"",
+    ""email"": ""user@example.com""
+  }
+]","[
+  {
+    ""account_id"": 0,
+    ""name"": ""string"",
+    ""email"": ""user@example.com""
+  }
+]",Passed
+,,,,,,,,,
+,,,,,,,,,
+2,MGR_CUSTOMERS_002       ,Verify customers list without token	,No token provided	,"[
+  {
+    ""account_id"": 0,
+    ""name"": ""string"",
+    ""email"": ""user@example.com""
+  }
+]",Send GET to /managers/customers/ without token,HTTP Status Code: 400 Bad Request,"{
+ ""detail"": ""Authentication credentials were not provided.""
+ }","{
+ ""detail"": ""Authentication credentials were not provided.""
+ }",Passed
+,,,,,,,,,
+,,,,,,,,,
+3,MGR_CUSTOMERS_003,Verify customers list with invalid token	,Invalid token provided	,"[
+  {
+    ""account_id"": 0,
+    ""name"": ""string"",
+    ""email"": ""user@example.com""
+  }
+]",Send GET to /managers/customers/ with invalid token,HTTP Status Code: 400 Bad Request,"{ 
+""detail"": ""Invalid token.""
+ }","{ 
+""detail"": ""Invalid token.""
+ }",Passed
+,,,,,,,,,
+,,,,,,,,,
+4,MGR_CUSTOMERS_004,Verify customers list when there are no customers	,System has no customers	,"[
+  {
+    ""account_id"": 0,
+    ""name"": ""string"",
+    ""email"": ""user@example.com""
+  }
+]",Send GET with valid token,"HTTP Status Code: 201 Created
+",[],[],Passed
+,,,,,,,,,
+,,,,,,,,,
+5,MGR_CUSTOMERS_005,Verify response structure of customer object	,Valid token	,"[
+  {
+    ""account_id"": 0,
+    ""name"": ""string"",
+    ""email"": ""user@example.com""
+  }
+]","GET /managers/customers/, check each object","HTTP Status Code: 201 Created
+","{
+""account_id"": 0, ""name"": ""string"", 
+""email"": ""user@example.com""
+}","{
+""account_id"": 0, ""name"": ""string"", 
+""email"": ""user@example.com""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+6,MGR_CUSTOMERS_006,Verify data type of customer fields	,Valid token	,"[
+  {
+    ""account_id"": 0,
+    ""name"": ""string"",
+    ""email"": ""user@example.com""
+  }
+]","GET /managers/customers/, check types","HTTP Status Code: 201 Created
+",Types are valid	,Types are valid	,Passed
+,,,,,,,,,
+,,,,,,,,,
+7,MGR_CUSTOMERS_007,Verify large number of customers returns successfully	,System has many customers	,"[
+  {
+    ""account_id"": 0,
+    ""name"": ""string"",
+    ""email"": ""user@example.com""
+  }
+]",Send GET with valid token,"HTTP Status Code: 201 Created
+",Response includes valid customer records	,Response includes valid customer records	,Passed
+,,,,,,,,,
+,,,,,,,,,
+8,MGR_CUSTOMERS_008,Verify API handles SQL injection in query params	,Valid token	,"[
+  {
+    ""account_id"": 0,
+    ""name"": ""string"",
+    ""email"": ""user@example.com""
+  }
+]",GET /managers/customers/?search=' OR 1=1--,HTTP Status Code: 400 Bad Request,Properly sanitized or handled	,Properly sanitized or handled	,Passed
+,,,,,,,,,
+,,,,,,,,,
+9,MGR_CUSTOMERS_009,Verify API method restriction (POST not allowed)	,Valid token	,"[
+  {
+    ""account_id"": 0,
+    ""name"": ""string"",
+    ""email"": ""user@example.com""
+  }
+]",Send POST to /managers/customers/,HTTP Status Code: 400 Bad Request,"{ 
+""detail"": ""Method \""POST\"" not allowed.""
+ }","{ 
+""detail"": ""Method \""POST\"" not allowed.""
+ }",Passed
+,,,,,,,,,
+,,,,,,,,,
+10,MGR_CUSTOMERS_010,Verify response time is under 2 seconds	,Valid token	,"[
+  {
+    ""account_id"": 0,
+    ""name"": ""string"",
+    ""email"": ""user@example.com""
+  }
+]",Measure GET response time,"HTTP Status Code: 201 Created
+",Response time < 2000ms	,Response time: 720ms	,Passed
