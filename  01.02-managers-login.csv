@@ -1,0 +1,72 @@
+,Role,Bank Manager ,,,,,,,
+,Project Name:,Modern Bank API ,,,,,,,
+,Feature Name:,Manager Login,,,,,,,
+,Reference Document:,,,,,,,,
+,Created By:,Sabina Yeasmin,,,,,,,
+,Updated By:,,,,,,,,
+,Date of Creation:,27 June 2025,,,,,,,
+,Number of  cases:,10,,,,,,,
+,Passed,10,,,,,,,
+,Failed,0,,,,,,,
+,,,,,,,,,
+#, CASE ID,DESCRIPTION,PRE-CONDITIONS, REQUEST BODY,STEPS,EXPECTED RESULT,RESPONSE BODY,ACTUAL RESULT,STATUS
+1,MGR_LOGIN_001	,Verify Login with Valid Credentials,API server is running	,"{
+  ""username"": ""admin_user"",
+  ""password"": ""securepassword123""
+}",1.Send POST to /managers/login/,"HTTP Status Code: 201 Created
+","{ ""message"": ""Manager Login successful"" }","{ ""message"": ""Login successful"" }",Passed
+,,,,,,,,,
+,,,,,,,,,
+2,MGR_LOGIN_002,Verify Login with Invalid Password,API server is running	,"{
+  ""username"": ""admin_user"",
+  ""password"": ""wrongpass""
+}",1.Send POST to /managers/login/,HTTP Status Code: 400 Bad Request,"{ ""error"": ""Invalid credentials"" }","{ ""error"": ""Invalid credentials"" }",Passed
+,,,,,,,,,
+,,,,,,,,,
+3,MGR_LOGIN_003,Verify Login with Unregistered Username	,API server is running	,"{ 
+""username"": ""unknown_user"", 
+""password"": ""anyvalue"" 
+}",1.Send POST to /managers/login/,HTTP Status Code: 400 Bad Request,"{ ""error"": ""Invalid credentials"" }","{ ""error"": ""Invalid credentials"" }",Passed
+,,,,,,,,,
+,,,,,,,,,
+4,MGR_LOGIN_004,Verify Login with Empty Username Field	,API server is running	,"{
+  ""username"": "" "",
+  ""password"": ""wrongpass""
+}",1.Send POST to /managers/login/,HTTP Status Code: 400 Bad Request,"{ ""error"": ""Username is required"" }","{ ""error"": ""Username is required"" }",Passed
+,,,,,,,,,
+,,,,,,,,,
+5,MGR_LOGIN_005,Verify Login with Empty Password Field	,API server is running	,"{
+  ""username"": ""admin_user"",
+  ""password"": "" ""
+}",1.Send POST to /managers/login/,HTTP Status Code: 400 Bad Request,"{ ""error"": ""Password is required"" }","{ ""error"": ""Password is required"" }",Passed
+,,,,,,,,,
+,,,,,,,,,
+6,MGR_LOGIN_006,Verify Login with Both Fields Empty	,API server is running	,"{
+  ""username"": "" "",
+  ""password"": "" ""
+}",1.Send POST to /managers/login/,HTTP Status Code: 400 Bad Request,"{ ""error"": ""Username and password are required"" }","{ ""error"": ""Username and password are required"" }",Passed
+,,,,,,,,,
+,,,,,,,,,
+7,MGR_LOGIN_007,Verify Login with SQL Injection Attempt	,API server is running	,"{ 
+""username"": ""admin_user"", 
+""password"": ""' OR '1'='1""
+ }",1.Send POST to /managers/login/,HTTP Status Code: 400 Bad Request,"{ ""error"": ""Invalid credentials"" }","{ ""error"": ""Invalid credentials"" }",Passed
+,,,,,,,,,
+,,,,,,,,,
+8,MGR_LOGIN_008,Verify Login with Script Injection in Username	,API server is running	,"{ 
+""username"": ""<script>alert(1)</script>"", 
+""password"": ""securepassword123""
+ }",1.Send POST to /managers/login/,HTTP Status Code: 400 Bad Request,"{ ""error"": ""Invalid credentials"" }","{ ""error"": ""Invalid credentials"" }",Passed
+,,,,,,,,,
+,,,,,,,,,
+9,MGR_LOGIN_009,Verify Login with Username as Email Format	,API server is running	,"{ 
+""username"": ""admin@example.com"", 
+""password"": ""securepassword123"" 
+}",1.Send POST to /managers/login/,HTTP Status Code: 400 Bad Request,"{ ""error"": ""Invalid credentials"" }","{ ""error"": ""Invalid credentials"" }",Passed
+,,,,,,,,,
+,,,,,,,,,
+10,MGR_LOGIN_010,Verify Response Time is Under 2 Seconds	,API server is running	,"{
+ ""username"": ""admin_user"", 
+""password"": ""securepassword123"" 
+}",1.Measure API response time,"HTTP Status Code: 201 Created
+",Response time < 2000ms	,Response time: 650ms	,Passed

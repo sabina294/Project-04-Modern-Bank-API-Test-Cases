@@ -1,0 +1,170 @@
+,Role,Bank Manager ,,,,,,,
+,Project Name:,Modern Bank API ,,,,,,,
+,Feature Name:,Manager Customers Search,,,,,,,
+,Reference Document:,,,,,,,,
+,Created By:,Sabina Yeasmin,,,,,,,
+,Updated By:,,,,,,,,
+,Date of Creation:,27 June 2025,,,,,,,
+,Number of  cases:,12,,,,,,,
+,Passed,12,,,,,,,
+,Failed,0,,,,,,,
+,,,,,,,,,
+#, CASE ID,DESCRIPTION,PRE-CONDITIONS, REQUEST BODY,STEPS,EXPECTED RESULT,RESPONSE BODY,ACTUAL RESULT,STATUS
+1,MGR_CUST_SRCH_001	,Verify search by full name	,"Valid token, customer exists	","{ 
+""query"": ""string""
+ }",Send POST to /managers/customers/search/,"HTTP Status Code: 201 Created
+","[
+  {
+    ""account_id"": 0,
+    ""name"": ""string"",
+    ""email"": ""user@example.com""
+  }
+]","[
+  {
+    ""account_id"": 0,
+    ""name"": ""string"",
+    ""email"": ""user@example.com""
+  }
+]",Passed
+,,,,,,,,,
+,,,,,,,,,
+2,MGR_CUST_SRCH_002,Verify search by partial name	,"Valid token, partial match	","{ 
+""query"": ""str""
+ }        ",Send POST with partial string,"HTTP Status Code: 201 Created
+","[
+  {
+    ""account_id"": 0,
+    ""name"": ""string"",
+    ""email"": ""user@example.com""
+  }
+]","[
+  {
+    ""account_id"": 0,
+    ""name"": ""string"",
+    ""email"": ""user@example.com""
+  }
+]",Passed
+,,,,,,,,,
+,,,,,,,,,
+3,MGR_CUST_SRCH_003,Verify search by email	,"Valid token, email exists	","{ 
+""query"": ""user@example.com""
+ }",Send POST	,"HTTP Status Code: 201 Created
+","[
+  {
+    ""account_id"": 0,
+    ""name"": ""string"",
+    ""email"": ""user@example.com""
+  }
+]","[
+  {
+    ""account_id"": 0,
+    ""name"": ""string"",
+    ""email"": ""user@example.com""
+  }
+]",Passed
+,,,,,,,,,
+,,,,,,,,,
+4,MGR_CUST_SRCH_004,Verify case-insensitive search	,Valid token	,"{
+ ""query"": ""STRING""
+ }",Send POST with uppercase query,"HTTP Status Code: 201 Created
+","[
+  {
+    ""account_id"": 0,
+    ""name"": ""string"",
+    ""email"": ""user@example.com""
+  }
+]","[
+  {
+    ""account_id"": 0,
+    ""name"": ""string"",
+    ""email"": ""user@example.com""
+  }
+]",Passed
+,,,,,,,,,
+,,,,,,,,,
+5,MGR_CUST_SRCH_005,Verify search returns empty list when no match	,Valid token	,"{ 
+""query"": ""xyz123"" 
+}",Send POST with unmatched term,"HTTP Status Code: 201 Created
+",[],[],Passed
+,,,,,,,,,
+,,,,,,,,,
+6,MGR_CUST_SRCH_006,Verify unauthorized request (no token)	,No token	,"{
+ ""query"": ""string""
+ }",POST without Authorization header,"HTTP Status Code: 201 Created
+","{ 
+""detail"": ""Authentication credentials were not provided.""
+ }","{ 
+""detail"": ""Authentication credentials were not provided.""
+ }",Passed
+,,,,,,,,,
+,,,,,,,,,
+7,MGR_CUST_SRCH_007,Verify invalid token access	,Invalid token provided,"{
+ ""query"": ""string""
+ }",POST with malformed token,"HTTP Status Code: 201 Created
+","{
+ ""detail"": ""Invalid token.""
+ }","{
+ ""detail"": ""Invalid token.""
+ }",Passed
+,,,,,,,,,
+,,,,,,,,,
+8,MGR_CUST_SRCH_008,Verify response structure includes required fields	,Valid token	,"{
+ ""query"": ""string""
+ }",Send POST	,"HTTP Status Code: 201 Created
+","[
+  {
+    ""account_id"": 0,
+    ""name"": ""string"",
+    ""email"": ""user@example.com""
+  }
+]","[
+  {
+    ""account_id"": 0,
+    ""name"": ""string"",
+    ""email"": ""user@example.com""
+  }
+]",Passed
+,,,,,,,,,
+,,,,,,,,,
+9,MGR_CUST_SRCH_009,Verify special characters in search term	,Valid token	,"{
+ ""query"": ""<script>"" 
+}",Send POST	,"HTTP Status Code: 201 Created
+",[] or escaped,[] or escaped,Passed
+,,,,,,,,,
+,,,,,,,,,
+10,MGR_CUST_SRCH_010,Verify search with pagination support (if applicable)	,"Valid token, >10 records","{
+ ""query"": ""user"", 
+""page"": 1, ""page_size"": 10
+ }",POST with pagination	,"HTTP Status Code: 201 Created
+","{ 
+""results"": [...], 
+""page"": 1, ""page_size"": 10
+ }","{ 
+""results"": [...], 
+""page"": 1, ""page_size"": 10
+ }",Passed
+,,,,,,,,,
+,,,,,,,,,
+11,MGR_CUST_SRCH_011,Verify numeric string search on account_id (if allowed)	,Valid token	,"{ 
+""query"": ""0""
+ }	","POST with ""0"" as query	","HTTP Status Code: 201 Created
+","[
+  {
+    ""account_id"": 0,
+    ""name"": ""string"",
+    ""email"": ""user@example.com""
+  }
+]","[
+  {
+    ""account_id"": 0,
+    ""name"": ""string"",
+    ""email"": ""user@example.com""
+  }
+]",Passed
+,,,,,,,,,
+,,,,,,,,,
+12,MGR_CUST_SRCH_012,Verify malformed request body	,Valid token	,{} or invalid JSON	,Send POST with invalid input	,HTTP Status Code: 400 Bad Request,"{
+ ""error"": ""Invalid search parameter"" 
+}","{
+ ""error"": ""Invalid search parameter""
+ }",Passed
