@@ -13,7 +13,189 @@ This repository contains all the manual testing artifacts for the **Modern Bank 
 
 ## ✅ Work Completed
 
-### 1. **Test Case Design Customers Registration **
+### 1. **Test Case Design Manager Registration**
+- Designed test cases based on functional requirements.
+- Covered **positive**, **negative**, **boundary**, and **UI** test scenarios.
+- Each test case includes:
+  - Test ID
+  - Description
+  - Preconditions
+  - Test Steps
+  - Expected Result
+  - Status (Pass/Fail)
+  
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/write-test-case-01.png?raw=true" alt="Test Cases" width="700" height="400"/>
+
+### 2. **Test Execution Manager Registration**
+- Executed all test cases manually across supported browsers/devices.
+- Marked each test with actual results and status.
+- Attached screenshots for failed cases (if applicable).
+
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/execute-test-case-01.png?raw=true" alt="Test Cases" width="700" height="400"/>
+
+### 3. **Test Case Design Manager Login**
+- Designed test cases based on functional requirements.
+- Covered **positive**, **negative**, **boundary**, and **UI** test scenarios.
+- Each test case includes:
+  - Test ID
+  - Description
+  - Preconditions
+  - Test Steps
+  - Expected Result
+  - Status (Pass/Fail)
+  
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/write-test-case-02.png?raw=true" alt="Test Cases" width="700" height="400"/>
+
+### 4. **Test Execution Manager Login**
+- Executed all test cases manually across supported browsers/devices.
+- Marked each test with actual results and status.
+- Attached screenshots for failed cases (if applicable).
+
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/execute-test-case-02.png?raw=true" alt="Test Cases" width="700" height="400"/>
+
+### 5. **Test Case Design Manager Stats**
+- Designed test cases based on functional requirements.
+- Covered **positive**, **negative**, **boundary**, and **UI** test scenarios.
+- Each test case includes:
+  - Test ID
+  - Description
+  - Preconditions
+  - Test Steps
+  - Expected Result
+  - Status (Pass/Fail)
+  
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/write-test-case-03.png?raw=true" alt="Test Cases" width="700" height="400"/>
+
+### 6. **Test Execution Manager Stats**
+- Executed all test cases manually across supported browsers/devices.
+- Marked each test with actual results and status.
+- Attached screenshots for failed cases (if applicable).
+
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/execute-test-case-03.png?raw=true" alt="Test Cases" width="700" height="400"/>
+
+### 7. **Test Case Design Manager Customers**
+- Designed test cases based on functional requirements.
+- Covered **positive**, **negative**, **boundary**, and **UI** test scenarios.
+- Each test case includes:
+  - Test ID
+  - Description
+  - Preconditions
+  - Test Steps
+  - Expected Result
+  - Status (Pass/Fail)
+  
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/write-test-case-04.png?raw=true" alt="Test Cases" width="700" height="400"/>
+
+### 8. **Test Execution Manager Customers**
+- Executed all test cases manually across supported browsers/devices.
+- Marked each test with actual results and status.
+- Attached screenshots for failed cases (if applicable).
+
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/execute-test-case-04.png?raw=true" alt="Test Cases" width="700" height="400"/>
+
+### 9. **Test Case Design Manager Customers Search**
+- Designed test cases based on functional requirements.
+- Covered **positive**, **negative**, **boundary**, and **UI** test scenarios.
+- Each test case includes:
+  - Test ID
+  - Description
+  - Preconditions
+  - Test Steps
+  - Expected Result
+  - Status (Pass/Fail)
+  
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/write-test-case-05.png?raw=true" alt="Test Cases" width="700" height="400"/>
+
+### 10. **Test Execution Manager Customers Search**
+- Executed all test cases manually across supported browsers/devices.
+- Marked each test with actual results and status.
+- Attached screenshots for failed cases (if applicable).
+
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/execute-test-case-05.png?raw=true" alt="Test Cases" width="700" height="400"/>
+
+### 11. **Test Case Design Manager Customers Transcations**
+- Designed test cases based on functional requirements.
+- Covered **positive**, **negative**, **boundary**, and **UI** test scenarios.
+- Each test case includes:
+  - Test ID
+  - Description
+  - Preconditions
+  - Test Steps
+  - Expected Result
+  - Status (Pass/Fail)
+  
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/write-test-case-06.png?raw=true" alt="Test Cases" width="700" height="400"/>
+
+### 12. **Test Execution Manager Customers Transcations**
+- Executed all test cases manually across supported browsers/devices.
+- Marked each test with actual results and status.
+- Attached screenshots for failed cases (if applicable).
+
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/execute-test-case-06.png?raw=true" alt="Test Cases" width="700" height="400"/>
+
+### 13. **Test Case Design Manager Transcations**
+- Designed test cases based on functional requirements.
+- Covered **positive**, **negative**, **boundary**, and **UI** test scenarios.
+- Each test case includes:
+  - Test ID
+  - Description
+  - Preconditions
+  - Test Steps
+  - Expected Result
+  - Status (Pass/Fail)
+  
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/write-test-case-07.png?raw=true" alt="Test Cases" width="700" height="400"/>
+
+### 14. **Test Execution Manager Transcations**
+- Executed all test cases manually across supported browsers/devices.
+- Marked each test with actual results and status.
+- Attached screenshots for failed cases (if applicable).
+
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/execute-test-case-07.png?raw=true" alt="Test Cases" width="700" height="400"/>
+
+### 15. **Test Case Design Manager Logout**
+- Designed test cases based on functional requirements.
+- Covered **positive**, **negative**, **boundary**, and **UI** test scenarios.
+- Each test case includes:
+  - Test ID
+  - Description
+  - Preconditions
+  - Test Steps
+  - Expected Result
+  - Status (Pass/Fail)
+  
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/write-test-case-08.png?raw=true" alt="Test Cases" width="700" height="400"/>
+
+### 16. **Test Execution Manager Logout**
+- Executed all test cases manually across supported browsers/devices.
+- Marked each test with actual results and status.
+- Attached screenshots for failed cases (if applicable).
+
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/execute-test-case-08.png?raw=true" alt="Test Cases" width="700" height="400"/>
+
+### 17. **Manager Bug Reporting**
+- Logged defects for failed test cases.
+- Included:
+  - Bug ID
+  - Title
+  - Steps to Reproduce
+  - Actual vs Expected Behavior
+  - Severity & Priority
+  - Status (New, Open, Fixed, Closed)
+  - Screenshot (if available)
+
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/bug-report-09.png?raw=true" alt="Test Cases" width="700" height="400"/>
+
+### 18. **Manager Test Summary Report**
+- Summarized total test cases, pass/fail status, defect trends.
+- Provided observations and improvement suggestions.
+- Screenshot (if available)
+
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/test-report-10.png?raw=true" alt="Test Cases" width="700" height="400"/>
+
+---
+
+### 19. **Test Case Design Customers Registration **
 - Designed test cases based on functional requirements.
 - Covered **positive**, **negative**, **boundary**, and **UI** test scenarios.
 - Each test case includes:
@@ -26,14 +208,14 @@ This repository contains all the manual testing artifacts for the **Modern Bank 
   
 <img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/01-write-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
-### 2. **Test Execution Customers Registration**
+### 20. **Test Execution Customers Registration**
 - Executed all test cases manually across supported browsers/devices.
 - Marked each test with actual results and status.
 - Attached screenshots for failed cases (if applicable).
 
 <img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/01-execute-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
-### 3. **Test Case Design Customers Login**
+### 21. **Test Case Design Customers Login**
 - Designed test cases based on functional requirements.
 - Covered **positive**, **negative**, **boundary**, and **UI** test scenarios.
 - Each test case includes:
@@ -46,14 +228,14 @@ This repository contains all the manual testing artifacts for the **Modern Bank 
   
 <img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/02-write-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
-### 4. **Test Execution Customers Login	**
+### 22. **Test Execution Customers Login	**
 - Executed all test cases manually across supported browsers/devices.
 - Marked each test with actual results and status.
 - Attached screenshots for failed cases (if applicable).
 
 <img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/02-execute-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
-### 5. **Test Case Design Customers Me Balance**
+### 23. **Test Case Design Customers Me Balance**
 - Designed test cases based on functional requirements.
 - Covered **positive**, **negative**, **boundary**, and **UI** test scenarios.
 - Each test case includes:
@@ -66,14 +248,14 @@ This repository contains all the manual testing artifacts for the **Modern Bank 
   
 <img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/03-write-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
-### 6. **Test Execution Customers Me Balance**
+### 24. **Test Execution Customers Me Balance**
 - Executed all test cases manually across supported browsers/devices.
 - Marked each test with actual results and status.
 - Attached screenshots for failed cases (if applicable).
 
 <img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/03-execute-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
-### 7. **Test Case Design Customers Me Deposit	**
+### 25. **Test Case Design Customers Me Deposit	**
 - Designed test cases based on functional requirements.
 - Covered **positive**, **negative**, **boundary**, and **UI** test scenarios.
 - Each test case includes:
@@ -86,14 +268,14 @@ This repository contains all the manual testing artifacts for the **Modern Bank 
   
 <img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/04-write-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
-### 8. **Test Execution Customers Me Deposit**
+### 26. **Test Execution Customers Me Deposit**
 - Executed all test cases manually across supported browsers/devices.
 - Marked each test with actual results and status.
 - Attached screenshots for failed cases (if applicable).
 
 <img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/04-execute-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
-### 9. **Test Case Design Customers Me Withdraw**
+### 27. **Test Case Design Customers Me Withdraw**
 - Designed test cases based on functional requirements.
 - Covered **positive**, **negative**, **boundary**, and **UI** test scenarios.
 - Each test case includes:
@@ -106,14 +288,14 @@ This repository contains all the manual testing artifacts for the **Modern Bank 
   
 <img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/05-write-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
-### 10. **Test Execution Customers Me Withdraw	**
+### 28. **Test Execution Customers Me Withdraw	**
 - Executed all test cases manually across supported browsers/devices.
 - Marked each test with actual results and status.
 - Attached screenshots for failed cases (if applicable).
 
 <img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/05-execute-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
-### 11. **Test Case Design Customers Me Transfer**
+### 29. **Test Case Design Customers Me Transfer**
 - Designed test cases based on functional requirements.
 - Covered **positive**, **negative**, **boundary**, and **UI** test scenarios.
 - Each test case includes:
@@ -126,14 +308,14 @@ This repository contains all the manual testing artifacts for the **Modern Bank 
   
 <img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/06-write-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
-### 12. **Test Execution Customers Me Transfer**
+### 30. **Test Execution Customers Me Transfer**
 - Executed all test cases manually across supported browsers/devices.
 - Marked each test with actual results and status.
 - Attached screenshots for failed cases (if applicable).
 
 <img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/06-execute-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
-### 13. **Test Case Design Customers Me Transactions**
+### 31. **Test Case Design Customers Me Transactions**
 - Designed test cases based on functional requirements.
 - Covered **positive**, **negative**, **boundary**, and **UI** test scenarios.
 - Each test case includes:
@@ -146,14 +328,14 @@ This repository contains all the manual testing artifacts for the **Modern Bank 
   
 <img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/07-write-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
-### 14. **Test Execution Customers Me Transactions**
+### 32. **Test Execution Customers Me Transactions**
 - Executed all test cases manually across supported browsers/devices.
 - Marked each test with actual results and status.
 - Attached screenshots for failed cases (if applicable).
 
 <img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/07-execute-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
-### 15. **Test Case Design Customers Me Transactions Filter**
+### 33. **Test Case Design Customers Me Transactions Filter**
 - Designed test cases based on functional requirements.
 - Covered **positive**, **negative**, **boundary**, and **UI** test scenarios.
 - Each test case includes:
@@ -166,14 +348,14 @@ This repository contains all the manual testing artifacts for the **Modern Bank 
   
 <img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/08-write-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
-### 16. **Test Execution Customers Me Transactions Filter**
+### 34. **Test Execution Customers Me Transactions Filter**
 - Executed all test cases manually across supported browsers/devices.
 - Marked each test with actual results and status.
 - Attached screenshots for failed cases (if applicable).
 
 <img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/08-execute-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
-### 17. **Test Case Design Customers Me Transactions Search**
+### 35. **Test Case Design Customers Me Transactions Search**
 - Designed test cases based on functional requirements.
 - Covered **positive**, **negative**, **boundary**, and **UI** test scenarios.
 - Each test case includes:
@@ -186,14 +368,14 @@ This repository contains all the manual testing artifacts for the **Modern Bank 
   
 <img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/09-write-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
-### 18. **Test Execution Customers Me Transactions Search**
+### 36. **Test Execution Customers Me Transactions Search**
 - Executed all test cases manually across supported browsers/devices.
 - Marked each test with actual results and status.
 - Attached screenshots for failed cases (if applicable).
 
 <img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/09-execute-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
-### 19. **Test Case Design Customers Logout	**
+### 37. **Test Case Design Customers Logout	**
 - Designed test cases based on functional requirements.
 - Covered **positive**, **negative**, **boundary**, and **UI** test scenarios.
 - Each test case includes:
@@ -206,14 +388,14 @@ This repository contains all the manual testing artifacts for the **Modern Bank 
   
 <img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/10-write-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
-### 20. **Test Execution Customers Logout**
+### 38. **Test Execution Customers Logout**
 - Executed all test cases manually across supported browsers/devices.
 - Marked each test with actual results and status.
 - Attached screenshots for failed cases (if applicable).
 
 <img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/10-execute-test-case.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
-### 21. **Customer Bug Reporting**
+### 39. **Customer Bug Reporting**
 - Logged defects for failed test cases.
 - Included:
   - Bug ID
@@ -226,7 +408,7 @@ This repository contains all the manual testing artifacts for the **Modern Bank 
 
 <img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/11-bug-report.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
-### 22. **Customer Test Summary Report**
+### 40. **Customer Test Summary Report**
 - Summarized total test cases, pass/fail status, defect trends.
 - Provided observations and improvement suggestions.
 - Screenshot (if available)
