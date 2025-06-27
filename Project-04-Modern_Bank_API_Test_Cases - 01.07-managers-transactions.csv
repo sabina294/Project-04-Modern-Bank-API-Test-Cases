@@ -1,0 +1,198 @@
+,Role,Bank Manager ,,,,,,,
+,Project Name:,Modern Bank API ,,,,,,,
+,Feature Name:,Manager Transcations,,,,,,,
+,Reference Document:,,,,,,,,
+,Created By:,Sabina Yeasmin,,,,,,,
+,Updated By:,,,,,,,,
+,Date of Creation:,27 June 2025,,,,,,,
+,Number of  cases:,12,,,,,,,
+,Passed,12,,,,,,,
+,Failed,0,,,,,,,
+,,,,,,,,,
+#, CASE ID,DESCRIPTION,PRE-CONDITIONS, REQUEST BODY,STEPS,EXPECTED RESULT,RESPONSE BODY,ACTUAL RESULT,STATUS
+1,MGR_TXN_001        ,Verify successful fetch of customer transactions	,"API is running, Valid token	","[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""deposit"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-27T06:28:17.219Z"",
+    ""description"": ""string""
+  }
+]",Send GET /managers/transactions/ with valid token,"HTTP Status Code: 201 Created
+","[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""deposit"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-27T06:06:58.296Z"",
+    ""description"": ""string""
+  }
+]","[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""deposit"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-27T06:06:58.296Z"",
+    ""description"": ""string""
+  }
+]",Passed
+,,,,,,,,,
+,,,,,,,,,
+2,MGR_TXN_002,Verify required fields in response	,"Valid token, transactions exist	","[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""deposit"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-27T06:28:17.219Z"",
+    ""description"": ""string""
+  }
+]",Check keys in each transaction	,"HTTP Status Code: 201 Created
+",All required fields found in response	,All required fields found in response	,Passed
+,,,,,,,,,
+,,,,,,,,,
+3,MGR_TXN_003,Verify data types of transaction fields	,Valid token	,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""deposit"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-27T06:28:17.219Z"",
+    ""description"": ""string""
+  }
+]",Validate each field's data type	,"HTTP Status Code: 201 Created
+",All types correct	,All types correct	,Passed
+,,,,,,,,,
+,,,,,,,,,
+4,MGR_TXN_004,Verify empty list when no transactions exist	,New customer or empty DB	,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""deposit"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-27T06:28:17.219Z"",
+    ""description"": ""string""
+  }
+]",Send GET with valid token	,"HTTP Status Code: 201 Created
+",[],[],Passed
+,,,,,,,,,
+,,,,,,,,,
+5,MGR_TXN_005,Verify only allowed transaction types are returned	,Valid token	,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""deposit"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-27T06:28:17.219Z"",
+    ""description"": ""string""
+  }
+]",Check transaction_type field values	,"HTTP Status Code: 201 Created
+","transaction_type: ""deposit"" confirmed	","transaction_type: ""deposit"" confirmed	",Passed
+,,,,,,,,,
+,,,,,,,,,
+6,MGR_TXN_006,Verify ISO 8601 timestamp format	,"Valid token, response returned	","[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""deposit"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-27T06:28:17.219Z"",
+    ""description"": ""string""
+  }
+]",Check format of timestamp field	,"HTTP Status Code: 201 Created
+","""2025-06-27T06:06:58.296Z"" — valid ISO format	","""2025-06-27T06:06:58.296Z"" — valid ISO format	",Passed
+,,,,,,,,,
+,,,,,,,,,
+7,MGR_TXN_007,Verify special characters are safely handled	,At least one transaction with symbols	,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""deposit"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-27T06:28:17.219Z"",
+    ""description"": ""string""
+  }
+]",Check special chars in description	,"HTTP Status Code: 201 Created
+",Special characters accepted and properly escaped	,Special characters accepted and properly escaped	,Passed
+,,,,,,,,,
+,,,,,,,,,
+8,MGR_TXN_008,Verify response without token	,No token provided	,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""deposit"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-27T06:28:17.219Z"",
+    ""description"": ""string""
+  }
+]",Send GET without Authorization	,HTTP Status Code: 400 Bad Request,"{
+ ""detail"": ""Authentication credentials were not provided."" 
+}","{
+ ""detail"": ""Authentication credentials were not provided."" 
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+9,MGR_TXN_009,Verify access with invalid or expired token	,Expired or malformed token	,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""deposit"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-27T06:28:17.219Z"",
+    ""description"": ""string""
+  }
+]",Send GET with invalid token	,HTTP Status Code: 400 Bad Request,"{
+ ""detail"": ""Invalid token."" 
+}
+ or 
+{ 
+""error"": ""Token has expired"" 
+}","{
+ ""detail"": ""Invalid token."" 
+}
+ or 
+{ 
+""error"": ""Token has expired"" 
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+10,MGR_TXN_010,Verify response time is under 2 seconds	,API server stable	,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""deposit"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-27T06:28:17.219Z"",
+    ""description"": ""string""
+  }
+]",Measure API response time	,"HTTP Status Code: 201 Created
+",< 2000ms	,Actual: ~720ms	,Passed
+,,,,,,,,,
+,,,,,,,,,
+11,MGR_TXN_011,Verify pagination or limit applied	,Customer has 1000+ transactions	,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""deposit"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-27T06:28:17.219Z"",
+    ""description"": ""string""
+  }
+]",Send GET and verify limit/pagination	,"HTTP Status Code: 201 Created
+",Response limited or contains pagination metadata,Page size controlled or chunked data returned	,Passed
+,,,,,,,,,
+,,,,,,,,,
+12,MGR_TXN_012,Verify response contains no sensitive user data	,Valid token	,"[
+  {
+    ""transaction_id"": 0,
+    ""account_id"": 0,
+    ""transaction_type"": ""deposit"",
+    ""amount"": 0,
+    ""timestamp"": ""2025-06-27T06:28:17.219Z"",
+    ""description"": ""string""
+  }
+]",Inspect JSON response	,"HTTP Status Code: 201 Created
+","Should not include email, password, token	",Only transaction-related fields returned	,Passed

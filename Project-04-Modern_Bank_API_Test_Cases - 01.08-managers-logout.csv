@@ -1,0 +1,64 @@
+,Role,Bank Manager ,,,,,,,
+,Project Name:,Modern Bank API ,,,,,,,
+,Feature Name:,Manager Logout,,,,,,,
+,Reference Document:,,,,,,,,
+,Created By:,Sabina Yeasmin,,,,,,,
+,Updated By:,,,,,,,,
+,Date of Creation:,27 June 2025,,,,,,,
+,Number of  cases:,8,,,,,,,
+,Passed,8,,,,,,,
+,Failed,0,,,,,,,
+,,,,,,,,,
+#, CASE ID,DESCRIPTION,PRE-CONDITIONS, REQUEST BODY,STEPS,EXPECTED RESULT,RESPONSE BODY,ACTUAL RESULT,STATUS
+1,MGR_LOGOUT_001,Verify successful logout with valid token	,Manager is logged in with valid JWT token	,,Send POST to /managers/logout/,"HTTP Status Code: 201 Created
+","{
+  ""message"": ""Logout successful""
+}","{
+  ""message"": ""Logout successful""
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+2,MGR_LOGOUT_002,Verify logout without token	,API is running	,,Send POST without token,HTTP Status Code: 400 Bad Request,"{ 
+ ""error"": ""Authorization token required""
+ }","{ 
+ ""error"": ""Authorization token required""
+ }",Passed
+,,,,,,,,,
+,,,,,,,,,
+3,MGR_LOGOUT_003,Verify logout with expired token	,JWT token is expired	,,Send POST with expired token,HTTP Status Code: 400 Bad Request,"{ 
+ ""error"": ""Token has expired""
+ }","{ 
+ ""error"": ""Token has expired""
+ }",Passed
+,,,,,,,,,
+,,,,,,,,,
+4,MGR_LOGOUT_004,Verify logout with invalid token	,Token is malformed	,,Send POST with invalid token,HTTP Status Code: 400 Bad Request,"{ 
+ ""error"": ""Invalid token""
+ }","{ 
+ ""error"": ""Invalid token""
+ }",Passed
+,,,,,,,,,
+,,,,,,,,,
+5,MGR_LOGOUT_005,Verify logout with already logged-out token	,Reuse previously invalidated token	,,Send POST again with same token,HTTP Status Code: 400 Bad Request,"{ 
+ ""error"": ""Token already invalidated""
+ }","{ 
+ ""error"": ""Token already invalidated""
+ }",Passed
+,,,,,,,,,
+,,,,,,,,,
+6,MGR_LOGOUT_006,Verify GET method is not allowed for logout	,Valid token	,,Send GET request to /managers/logout/,HTTP Status Code: 400 Bad Request,"{ 
+ ""error"": ""Method not allowed""
+ }","{ 
+ ""error"": ""Method not allowed""
+ }",Passed
+,,,,,,,,,
+,,,,,,,,,
+7,MGR_LOGOUT_007,Verify response time is under 1 second	,Valid token	,,Send POST and measure time,HTTP Status Code: 400 Bad Request,Response time < 1000ms	,Measured time: ~320ms	,Passed
+,,,,,,,,,
+,,,,,,,,,
+8,MGR_LOGOUT_008,Verify logout response structure	,Valid token	,,Check JSON keys like message,"HTTP Status Code: 201 Created
+","{
+  ""message"": ""Logout successful""
+}","{
+  ""message"": ""Logout successful""
+}",Passed

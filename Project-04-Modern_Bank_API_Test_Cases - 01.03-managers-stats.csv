@@ -1,0 +1,111 @@
+,Role,Bank Manager ,,,,,,,
+,Project Name:,Modern Bank API ,,,,,,,
+,Feature Name:,Manager Stats,,,,,,,
+,Reference Document:,,,,,,,,
+,Created By:,Sabina Yeasmin,,,,,,,
+,Updated By:,,,,,,,,
+,Date of Creation:,27 June 2025,,,,,,,
+,Number of  cases:,10,,,,,,,
+,Passed,10,,,,,,,
+,Failed,0,,,,,,,
+,,,,,,,,,
+#, CASE ID,DESCRIPTION,PRE-CONDITIONS, REQUEST BODY,STEPS,EXPECTED RESULT,RESPONSE BODY,ACTUAL RESULT,STATUS
+1,MGR_STATS_001	,Verify stats API returns correct keys	,Manager is authenticated,"{
+  ""total_customers"": 0,
+  ""total_transactions"": 0,
+  ""total_balance"": 0
+}",Send GET to /managers/stats/ with valid token,"HTTP Status Code: 201 Created
+","{
+  ""total_customers"": 0,
+  ""total_transactions"": 0,
+  ""total_balance"": 0
+}","{
+  ""total_customers"": 0,
+  ""total_transactions"": 0,
+  ""total_balance"": 0
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+2,MGR_STATS_002,Verify stats API without token returns error	,No token provided	,"{
+  ""total_customers"": 0,
+  ""total_transactions"": 0,
+  ""total_balance"": 0
+}",Send GET to /managers/stats/ without Authorization header,HTTP Status Code: 400 Bad Request,"{ 
+""detail"": ""Authentication credentials were not provided.""
+ }","{ 
+""detail"": ""Authentication credentials were not provided.""
+ }",Passed
+,,,,,,,,,
+,,,,,,,,,
+3,MGR_STATS_003,Verify stats API with invalid token	,Invalid token provided	,"{
+  ""total_customers"": 0,
+  ""total_transactions"": 0,
+  ""total_balance"": 0
+}",Send GET to /managers/stats/ with malformed token,HTTP Status Code: 400 Bad Request,"{ ""detail"": ""Invalid token."" }","{ ""detail"": ""Invalid token."" }",Passed
+,,,,,,,,,
+,,,,,,,,,
+4,MGR_STATS_004,Verify stats values when system is empty	,System has no data	,"{
+  ""total_customers"": 0,
+  ""total_transactions"": 0,
+  ""total_balance"": 0
+}",Send GET with valid token,"HTTP Status Code: 201 Created
+","{
+  ""total_customers"": 0,
+  ""total_transactions"": 0,
+  ""total_balance"": 0
+}","{
+  ""total_customers"": 0,
+  ""total_transactions"": 0,
+  ""total_balance"": 0
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+5,MGR_STATS_005,Verify response time is under 2 seconds	,Authenticated request	,"{
+  ""total_customers"": 0,
+  ""total_transactions"": 0,
+  ""total_balance"": 0
+}",Measure response time of GET /managers/stats/,"HTTP Status Code: 201 Created
+",Response time < 2000ms	,Response time: 450ms	,Passed
+,,,,,,,,,
+,,,,,,,,,
+6,MGR_STATS_006,Verify stats data type validation	,Valid token	,"{
+  ""total_customers"": 0,
+  ""total_transactions"": 0,
+  ""total_balance"": 0
+}",Check if all fields return integers,"HTTP Status Code: 201 Created
+",Data types: number	,int values received for all fields	,Passed
+,,,,,,,,,
+,,,,,,,,,
+7,MGR_STATS_007,Verify API method restriction (POST not allowed)	,Valid token	,"{
+  ""total_customers"": 0,
+  ""total_transactions"": 0,
+  ""total_balance"": 0
+}",Send POST to /managers/stats/,HTTP Status Code: 400 Bad Request,"{ ""detail"": ""Method \""POST\"" not allowed."" }","{ ""detail"": ""Method \""POST\"" not allowed."" }",Passed
+,,,,,,,,,
+,,,,,,,,,
+8,MGR_STATS_008,Verify large dataset doesn't affect response time	,System has many records	,"{
+  ""total_customers"": 0,
+  ""total_transactions"": 0,
+  ""total_balance"": 0
+}",Send GET with valid token on populated system,"HTTP Status Code: 201 Created
+",Response time < 2 seconds	,Response time: 820ms	,Passed
+,,,,,,,,,
+,,,,,,,,,
+9,MGR_STATS_009,Verify stat values are consistent with DB totals	,DB has known values	,"{
+  ""total_customers"": 0,
+  ""total_transactions"": 0,
+  ""total_balance"": 0
+}","GET /managers/stats/, compare with DB","HTTP Status Code: 201 Created
+",Match DB totals	,"{
+  ""total_customers"": 0,
+  ""total_transactions"": 0,
+  ""total_balance"": 0
+}",Passed
+,,,,,,,,,
+,,,,,,,,,
+10,MGR_STATS_010,Verify caching behavior (if applicable)	,Endpoint supports caching	,"{
+  ""total_customers"": 0,
+  ""total_transactions"": 0,
+  ""total_balance"": 0
+}","Repeat GET request rapidly, check for consistent and fast response","HTTP Status Code: 201 Created
+","Same result, < 500ms	",Consistent result and 230ms	,Passed
