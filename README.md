@@ -415,6 +415,15 @@ This repository contains all the manual testing artifacts for the **Modern Bank 
 
 <img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/12-test-report.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
+
+### 40. **Postman API Test Summary Report**
+- Summarized total test cases, pass/fail status, defect trends.
+- Provided observations and improvement suggestions.
+- Screenshot (if available)
+
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/Newman-report%202025-06-28%2020-48-08.png?raw=true" alt="Test Cases" width="700" height="400"/>
+
+
 ---
 
 ## 🧰 Tools Used
