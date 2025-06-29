@@ -64,14 +64,14 @@ This repository contains all the manual testing artifacts for the **Modern Bank 
   - Expected Result
   - Status (Pass/Fail)
   
-<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/write-test-case-03.png?raw=true" alt="Test Cases" width="700" height="400"/>
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/manager-image/write-test-case-03.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
 ### 6. **Test Execution Manager Stats**
 - Executed all test cases manually across supported browsers/devices.
 - Marked each test with actual results and status.
 - Attached screenshots for failed cases (if applicable).
 
-<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/manager-image/write-test-case-03.png?raw=true" alt="Test Cases" width="700" height="400"/>
+<img src="https://github.com/sabina294/Project-04-Modern-Bank-API-Test-Cases/blob/main/manager-image/execute-test-case-05.png?raw=true" alt="Test Cases" width="700" height="400"/>
 
 ### 7. **Test Case Design Manager Customers**
 - Designed test cases based on functional requirements.
